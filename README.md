@@ -1,49 +1,70 @@
 # AOCX Exchange
 
-AOCX（Agent Object and Context Exchange，智能体对象与上下文交换）为项目、研究和文档工作提供上下文交换格式及本地参考实现。记录以 `id`、`rev`、`kind`、`text` 标识对象、修订、类别和正文，关系连接具体修订。条件、来源、状态和领域扩展可以随记录一起交接。
+AOCX（Agent Object and Context Exchange，智能体对象与上下文交换）是受保全契约约束的上下文编译器。它把项目、研究和文档档案编译为可独立解码的表示：先确定必须保留的对象、修订、条件、关系与元数据，再对实际可解码的候选测量完整传输成本，选出满足契约的最小候选。
 
-AOCI 为本仓库维护随源码演进的项目索引，记录文件职责、关联、接口和约束。AOCX 为跨任务的交接提供档案和阅读视图，并支持把 AOCI 索引作为输入。仓库自身的索引从 [aoci.txt](aoci.txt) 进入，AOCI MCP 的接入方式见[宿主适配说明](references/mcp-binding.md)。
+逻辑保全是候选准入条件。自然语言、混合语言、公式和探索笔记作为原始内容保存；显式逻辑表达可以附加为开放 AST。编码器通过结构因子化和共享词典减少重复，每个结果都经过真实解码与逐值比较。[核心规范](references/specification.md)定义保全范围，[架构说明](references/architecture.md)说明模块与有限优化问题。
 
-## 命令行用法
+## 编译与恢复上下文
 
-在仓库根目录运行。命令行使用 Python 3.9 或更高版本及其标准库。
+在仓库根目录运行。字节与字符成本使用 Python 3.9 或更高版本的标准库；token 成本需要可用的 `tiktoken` 及指定编码。
 
 ```sh
-python3 scripts/aocx.py --help
 python3 scripts/aocx.py validate assets/examples/software
+python3 scripts/aocx.py compile assets/examples/software --out context.aocx --report compile-report.json
+python3 scripts/aocx.py verify assets/examples/software context.aocx
+python3 scripts/aocx.py decode context.aocx --out context.json
 ```
 
-创建档案时准备两份 UTF-8 JSONL 文件，每行一条记录或关系。使用新路径存放档案和交接视图。
+`compile` 默认使用 `exact` 契约，保留整个上下文值：命名空间、全部记录与关系、当前修订、profile 和档案元数据。`decode` 从表示本身恢复这些值；`verify` 进一步与指定源档案核对。附件与导入原件由原档案保存，使用 `restore` 恢复原始字节。
+
+默认候选为 `aocx-expr/1` 和 `aocx-expr-dict/1`。输出首行为 `AOCX/1 <codec-id>`，正文携带契约、来源绑定、目标上下文与恢复摘要。`json/1` 可作为显式候选加入比较。编译报告在标准输出中列出各候选成本、淘汰原因、选中的 codec 和保全结果；`--report` 同时保存 JSON 报告，`optimize` 是 `compile` 的别名。
 
 ```sh
+python3 scripts/aocx.py compile assets/examples/software --codec aocx-expr/1 --codec aocx-expr-dict/1 --codec json/1 --metric bytes --out compared.aocx
+python3 scripts/aocx.py compile assets/examples/software --metric tokens --tokenizer cl100k_base --out token-context.aocx
+```
+
+选择局部交接范围时使用 `projection`。`--select` 从对象当前修订出发，纳入固定修订的条件与依赖闭包；默认省略记录、关系的 `body` 和 `extensions`，`--full-fields` 保留所选对象的全部字段。历史前提保持原修订身份，`heads` 仅保留源档案实际选中的当前修订。
+
+```sh
+python3 scripts/aocx.py compile assets/examples/math --mode projection --select math/conclusion --full-fields --out selected.aocx
+```
+
+接收方可通过 `--reader capabilities.json` 限定支持的 codec 与 profile。成本包含完整输出中的头部、契约、来源绑定、共享词典和正文。比较结论限定为本次已检查的有限候选集合及指定成本度量。
+
+## 记录、逻辑和原始档案
+
+记录至少包含 `id`、`rev`、`kind`、`text`；关系连接具体修订。`text` 保存自由表达，条件、状态、来源、保护锚点和未知扩展随记录保留。显式逻辑放在可选 `logic` 字段中，其格式为 `{ "format": "aocx-logic/1", "expression": AST }`。谓词名称与领域解释由内容作者提供，解析器检查结构并支持可逆渲染。
+
+```sh
+python3 scripts/aocx.py logic --expression 'S[x="GenshinImpact"]⊢x∈{y|SelfDev(Dev(x),y)∧OpenAdvGame(y)}' --out logic.json
 python3 scripts/aocx.py create --records records.jsonl --relations relations.jsonl --out exchange --namespace my-project
-python3 scripts/aocx.py capsule exchange --full --out context.aocx
-```
-
-`capsule --full` 保留记录和关系的全部 JSON 值。默认交接视图在头部声明选取范围与省略项。`--select` 按对象选取内容，并纳入引用条件和依赖前提。
-
-导入 AOCI 时提供含 `aoci.txt` 及其已声明卷的目录，导入 GBCX 时可以提供 ZIP 档案。导入结果保留原始资料并生成统一的记录与关系。`restore` 恢复导入时保存的原件。
-
-```sh
 python3 scripts/aocx.py import-aoci path/to/index index-exchange --namespace project-index
 python3 scripts/aocx.py import-gbcx archive.zip research-exchange --namespace research
 python3 scripts/aocx.py restore research-exchange restored.zip
 ```
 
-`check-view` 核对 BabelTele 视图的来源绑定、引用和保护字段。视图能否支持指定读者完成任务，由独立的模型评估确定。[兼容与语言视图](references/profiles.md)说明了导入范围和检查方式。
+导入 AOCI 时提供含 `aoci.txt` 及声明卷的目录；导入 GBCX 时可提供 ZIP。适配器保存原件并生成统一记录。`check-view` 核对 BabelTele 视图的源绑定、保护字段和评估证据绑定；读者完成具体任务的效果由对应评估报告记录。已有 `capsule`、`parse_capsule` 和 `table-jsonl/1` 接口继续提供兼容路径。[兼容与语言 profile](references/profiles.md)列出各自范围。
 
 ## 仓库结构与验证
 
-| 路径 | 内容 |
+| 路径 | 职责 |
 | --- | --- |
-| [`scripts/aocx.py`](scripts/aocx.py) | 交换格式、命令行、档案与视图检查 |
-| [`scripts/adapters/`](scripts/adapters/) | AOCI 和 GBCX 导入适配器 |
-| [`assets/schemas/`](assets/schemas/) 与 [`assets/examples/`](assets/examples/) | JSON Schema 及软件、数学、文档档案示例 |
-| [`references/`](references/) | [格式规范](references/specification.md)、[验证方法](references/validation.md)与[研究来源](references/research.md) |
-| [`SKILL.md`](SKILL.md) | 智能体使用 AOCX 交接上下文的操作说明 |
+| [`scripts/aocx.py`](scripts/aocx.py) | CLI 与历史 Python API 兼容入口 |
+| [`scripts/aocx_core/contracts.py`](scripts/aocx_core/contracts.py) | 上下文快照、保全契约、选择闭包与逐值比较 |
+| [`scripts/aocx_core/optimizer.py`](scripts/aocx_core/optimizer.py) | 编码、解码、验收、测量与候选选择 |
+| [`scripts/aocx_core/codecs.py`](scripts/aocx_core/codecs.py) | 共享 codec 注册表及表达式、词典、JSON 编解码器 |
+| [`scripts/aocx_core/logic.py`](scripts/aocx_core/logic.py) | 开放逻辑 AST、结构检查、解析与渲染 |
+| [`scripts/aocx_core/`](scripts/aocx_core/) | 图模型、档案存储、旧格式导入、视图与能力协商 |
+| [`scripts/adapters/`](scripts/adapters/) | AOCI 和 GBCX 的原生格式映射 |
+| [`assets/schemas/`](assets/schemas/) 与 [`assets/examples/`](assets/examples/) | JSON Schema 与可复现示例 |
+| [`references/`](references/) | 规范、架构、兼容范围、[验证方法](references/validation.md)和研究来源 |
+| [`SKILL.md`](SKILL.md) | 智能体编译与交接上下文的操作入口 |
 
-现有测试覆盖记录与关系、旧格式导入与恢复、紧凑视图以及修订冲突。涉及档案完整性的操作与测试会计算或核验 SHA-256。
+契约测试入口：
 
 ```sh
 python3 -m unittest discover -s scripts/tests -v
 ```
+
+AOCI 维护本仓库随源码演进的项目索引，从 [aoci.txt](aoci.txt) 进入。索引维护、交付确认与基线使用原生 AOCI 流程；AOCX 可将指定索引内容导入并编译为交接表示。具体操作见 [AOCI 绑定说明](references/mcp-binding.md)。

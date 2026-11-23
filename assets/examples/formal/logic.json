@@ -1,0 +1,78 @@
+{
+  "format": "aocx-logic/1",
+  "expression": {
+    "op": "call",
+    "name": "zh",
+    "args": [
+      {
+        "op": "sequent",
+        "left": {
+          "op": "bind",
+          "name": "S",
+          "bindings": [
+            {
+              "name": "x",
+              "value": {
+                "op": "const",
+                "value": "GenshinImpact"
+              }
+            }
+          ]
+        },
+        "right": {
+          "op": "in",
+          "left": {
+            "op": "var",
+            "name": "x"
+          },
+          "right": {
+            "op": "set",
+            "binder": "y",
+            "body": {
+              "op": "and",
+              "left": {
+                "op": "call",
+                "name": "SelfDev",
+                "args": [
+                  {
+                    "op": "call",
+                    "name": "Dev",
+                    "args": [
+                      {
+                        "op": "var",
+                        "name": "x"
+                      }
+                    ]
+                  },
+                  {
+                    "op": "var",
+                    "name": "y"
+                  }
+                ]
+              },
+              "right": {
+                "op": "call",
+                "name": "OpenAdvGame",
+                "args": [
+                  {
+                    "op": "var",
+                    "name": "y"
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "interpretation": "Authored domain notation; the reader supplies predicate meanings.",
+  "symbols": {
+    "zh": "A presentation annotation retaining the expression as its argument.",
+    "S": "The author-defined context binding x in this sequent.",
+    "Dev": "Developer of the named game.",
+    "SelfDev": "The developer named by the first argument developed the second argument.",
+    "OpenAdvGame": "The argument belongs to the authored open-world adventure-game category.",
+    "y": "The set-builder variable ranging over games."
+  }
+}

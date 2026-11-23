@@ -1,0 +1,2 @@
+P' = zh(S[x="GenshinImpact"]⊢x∈{y|SelfDev(Dev(x),y)∧OpenAdvGame(y)})
+zh((S[x="GenshinImpact"]⊢(x∈{y|(SelfDev(Dev(x),y)∧OpenAdvGame(y))})))

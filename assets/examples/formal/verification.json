@@ -1,0 +1,165 @@
+{
+  "exact": {
+    "compile": {
+      "status": "passed",
+      "selected_codec": "aocx-expr-dict/1",
+      "metric": "bytes",
+      "cost": 3790,
+      "bytes": 3790,
+      "sha256": "95a7bcad32f2dc02b0f15357e5b5ecc4a07f761affcc003d73645ff0f3b940c7",
+      "fidelity": "exact",
+      "scope": "context-values",
+      "recovery": "self-contained",
+      "logic_preserved": true,
+      "finite_search": true,
+      "candidates": [
+        {
+          "codec": "aocx-expr/1",
+          "status": "passed",
+          "cost": 4453,
+          "errors": [],
+          "bytes": 4453,
+          "characters": 4125,
+          "roundtrip": "passed",
+          "sha256": "b30de972690ac72e48f8161d09797be5bfd6c26c01d7b9ffe2eea7008a1c6cde"
+        },
+        {
+          "codec": "aocx-expr-dict/1",
+          "status": "passed",
+          "cost": 3790,
+          "errors": [],
+          "bytes": 3790,
+          "characters": 3462,
+          "roundtrip": "passed",
+          "sha256": "95a7bcad32f2dc02b0f15357e5b5ecc4a07f761affcc003d73645ff0f3b940c7"
+        }
+      ],
+      "selection_rule": "Minimum (measured cost, wire bytes, codec id) among verified candidates",
+      "source": {
+        "namespace": "example:formal",
+        "snapshot_sha256": "5d3c289544743bd74b764a09e67ff2e92689de3603e79d99164451d74dfb99e5",
+        "records_sha256": "f2eb7ed9698af19bab7c02c3d02f368e166217779fda5c5dbc073c8f73013c3f",
+        "relations_sha256": "4448d5ab64b3f34107574d0aff602efd66936e386c7e7f5a57db6d741476207c"
+      },
+      "target_sha256": "5d3c289544743bd74b764a09e67ff2e92689de3603e79d99164451d74dfb99e5",
+      "omitted_records": 0,
+      "omitted_relations": 0,
+      "contract": {
+        "format": "AOCX-CONTRACT",
+        "version": "1.0",
+        "fidelity": "exact",
+        "selection": {
+          "mode": "all"
+        },
+        "omit_fields": []
+      },
+      "errors": [],
+      "warnings": []
+    },
+    "verify": {
+      "status": "passed",
+      "fidelity": "exact",
+      "recovery": "self-contained",
+      "scope": "context-values",
+      "source_verified": true,
+      "logic_preserved": true,
+      "target_sha256": "5d3c289544743bd74b764a09e67ff2e92689de3603e79d99164451d74dfb99e5",
+      "counts": {
+        "records": 5,
+        "relations": 4
+      },
+      "errors": [],
+      "warnings": []
+    }
+  },
+  "projection": {
+    "compile": {
+      "status": "passed",
+      "selected_codec": "aocx-expr-dict/1",
+      "metric": "bytes",
+      "cost": 2709,
+      "bytes": 2709,
+      "sha256": "77ceb5ddd64fd18252773d3f079de342f63d8437cbb455b04ad6eca69a5cce24",
+      "fidelity": "projection",
+      "scope": "context-values",
+      "recovery": "self-contained",
+      "logic_preserved": true,
+      "finite_search": true,
+      "candidates": [
+        {
+          "codec": "aocx-expr/1",
+          "status": "passed",
+          "cost": 3195,
+          "errors": [],
+          "bytes": 3195,
+          "characters": 3067,
+          "roundtrip": "passed",
+          "sha256": "f33a944d47f7e34d16bc0e8d07b6234fc721ceb369b2a71abd2bcece485c2fd0"
+        },
+        {
+          "codec": "aocx-expr-dict/1",
+          "status": "passed",
+          "cost": 2709,
+          "errors": [],
+          "bytes": 2709,
+          "characters": 2581,
+          "roundtrip": "passed",
+          "sha256": "77ceb5ddd64fd18252773d3f079de342f63d8437cbb455b04ad6eca69a5cce24"
+        }
+      ],
+      "selection_rule": "Minimum (measured cost, wire bytes, codec id) among verified candidates",
+      "source": {
+        "namespace": "example:formal",
+        "snapshot_sha256": "5d3c289544743bd74b764a09e67ff2e92689de3603e79d99164451d74dfb99e5",
+        "records_sha256": "f2eb7ed9698af19bab7c02c3d02f368e166217779fda5c5dbc073c8f73013c3f",
+        "relations_sha256": "4448d5ab64b3f34107574d0aff602efd66936e386c7e7f5a57db6d741476207c"
+      },
+      "target_sha256": "0731478ef6766cf0d229c6a110e44d0d2ca1c8979a781c3f1ca448a129a6f734",
+      "omitted_records": 2,
+      "omitted_relations": 2,
+      "contract": {
+        "format": "AOCX-CONTRACT",
+        "version": "1.0",
+        "fidelity": "projection",
+        "selection": {
+          "mode": "heads",
+          "ids": [
+            "formal/claim"
+          ]
+        },
+        "omit_fields": [
+          "body",
+          "extensions"
+        ]
+      },
+      "errors": [],
+      "warnings": []
+    },
+    "verify": {
+      "status": "passed",
+      "fidelity": "projection",
+      "recovery": "self-contained",
+      "scope": "context-values",
+      "source_verified": true,
+      "logic_preserved": true,
+      "target_sha256": "0731478ef6766cf0d229c6a110e44d0d2ca1c8979a781c3f1ca448a129a6f734",
+      "counts": {
+        "records": 3,
+        "relations": 2
+      },
+      "errors": [],
+      "warnings": []
+    }
+  },
+  "independent_recovery": {
+    "status": "passed",
+    "source_path_removed": true,
+    "scope": "context-values"
+  },
+  "attachment": {
+    "path": "source/attachments/source.txt",
+    "bytes": 336,
+    "sha256": "76b58dea7d26f82d4bc4acb02e114bfcbe6d712ce23d62058e1ab9b6308b64ca",
+    "storage": "separate-source-archive"
+  }
+}

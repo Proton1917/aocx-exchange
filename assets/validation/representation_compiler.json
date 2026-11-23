@@ -1,0 +1,346 @@
+{
+  "format": "AOCX-COMPILER-MEASUREMENTS",
+  "version": "1.0",
+  "measured_at": "2026-11-23T12:08:01.269014+00:00",
+  "python": "3.12.14",
+  "source_base_commit": "770425050ec980d589559978ca184387d5257cee",
+  "metric": "bytes",
+  "fidelity": "exact",
+  "scope": "context-values",
+  "cost_scope": "Complete UTF-8 wire, including codec header, contract, source binding and dictionary",
+  "baseline": "json/1 encoding of the identical representation envelope",
+  "search": "Finite set of the three bundled codecs; no global-minimum claim",
+  "token_measurement": "not-run",
+  "cases": [
+    {
+      "name": "math",
+      "kind": "repository-example",
+      "counts": {
+        "records": 3,
+        "relations": 1
+      },
+      "source": {
+        "namespace": "example:math",
+        "snapshot_sha256": "89263209c6af491f3a4f52ac2e28c7adc9e25b27e89148d7417220a8a7b04db7",
+        "records_sha256": "705548ed7cdecff2d12e6228f4d793f4d9eb32ee7a07311a8f7a28ede692cafd",
+        "relations_sha256": "5d4f319640ff66a404eb4e50e4438cfc973557985e4710be18a87ab31ed0bef5"
+      },
+      "selected_codec": "aocx-expr-dict/1",
+      "wire_bytes": 1491,
+      "json_baseline_bytes": 1915,
+      "saved_bytes": 424,
+      "savings_fraction": 0.22141,
+      "candidates": [
+        {
+          "codec": "aocx-expr/1",
+          "status": "passed",
+          "cost": 1707,
+          "errors": [],
+          "bytes": 1707,
+          "characters": 1611,
+          "roundtrip": "passed",
+          "sha256": "955fb532b6f0ff1b28e6eb89311d47b490fda8bd6f11362f73c0bcf69f0911f9"
+        },
+        {
+          "codec": "aocx-expr-dict/1",
+          "status": "passed",
+          "cost": 1491,
+          "errors": [],
+          "bytes": 1491,
+          "characters": 1395,
+          "roundtrip": "passed",
+          "sha256": "14099c12b09f2eeda95611181cc4d3394e738f63f236565d87e06b674623fbd7"
+        },
+        {
+          "codec": "json/1",
+          "status": "passed",
+          "cost": 1915,
+          "errors": [],
+          "bytes": 1915,
+          "characters": 1819,
+          "roundtrip": "passed",
+          "sha256": "cf9b1ed70f2db39cbdc84b15e224c4c2b49f5ba6a8c651c3d59551c058a09357"
+        }
+      ],
+      "verification": {
+        "status": "passed",
+        "fidelity": "exact",
+        "recovery": "self-contained",
+        "scope": "context-values",
+        "source_verified": true,
+        "logic_preserved": true,
+        "target_sha256": "89263209c6af491f3a4f52ac2e28c7adc9e25b27e89148d7417220a8a7b04db7",
+        "counts": {
+          "records": 3,
+          "relations": 1
+        },
+        "errors": [],
+        "warnings": []
+      }
+    },
+    {
+      "name": "document",
+      "kind": "repository-example",
+      "counts": {
+        "records": 3,
+        "relations": 2
+      },
+      "source": {
+        "namespace": "example:document",
+        "snapshot_sha256": "2ad884f033334d59e4fbf4dcd3a935cd555d33a71c233d566ea65a0a61e5d4cc",
+        "records_sha256": "584f4583be6d69325dfbe9d8ed28472446b773043d381e5d39ce113a726544b7",
+        "relations_sha256": "7ac223695c851d4805908e30624c558a6003856e12819f12c80442e63d6b48da"
+      },
+      "selected_codec": "aocx-expr-dict/1",
+      "wire_bytes": 1656,
+      "json_baseline_bytes": 2133,
+      "saved_bytes": 477,
+      "savings_fraction": 0.223629,
+      "candidates": [
+        {
+          "codec": "aocx-expr/1",
+          "status": "passed",
+          "cost": 1904,
+          "errors": [],
+          "bytes": 1904,
+          "characters": 1794,
+          "roundtrip": "passed",
+          "sha256": "b4d622a88b2f3312086dd571698622a4ecd33ad66bb99ecb56a07763fe221bf8"
+        },
+        {
+          "codec": "aocx-expr-dict/1",
+          "status": "passed",
+          "cost": 1656,
+          "errors": [],
+          "bytes": 1656,
+          "characters": 1546,
+          "roundtrip": "passed",
+          "sha256": "983dd8e33187d055acdf1534d9c1f73c59b284deaa356f6232f87f49c064f91e"
+        },
+        {
+          "codec": "json/1",
+          "status": "passed",
+          "cost": 2133,
+          "errors": [],
+          "bytes": 2133,
+          "characters": 2023,
+          "roundtrip": "passed",
+          "sha256": "2af5c8a79fe90bd5428575e182a2d48729e97717a75a892178bd56a14fa35b87"
+        }
+      ],
+      "verification": {
+        "status": "passed",
+        "fidelity": "exact",
+        "recovery": "self-contained",
+        "scope": "context-values",
+        "source_verified": true,
+        "logic_preserved": true,
+        "target_sha256": "2ad884f033334d59e4fbf4dcd3a935cd555d33a71c233d566ea65a0a61e5d4cc",
+        "counts": {
+          "records": 3,
+          "relations": 2
+        },
+        "errors": [],
+        "warnings": []
+      }
+    },
+    {
+      "name": "software",
+      "kind": "repository-example",
+      "counts": {
+        "records": 4,
+        "relations": 2
+      },
+      "source": {
+        "namespace": "example:software",
+        "snapshot_sha256": "db18c402085f4a5126293614eb6a5390c73ba449e0191246cd3b6bae8148c8de",
+        "records_sha256": "faa610a3c0692f0bfb8f6c9c6cc1ed86107582e640f6b23e8e5436bf87e87a89",
+        "relations_sha256": "722aeac7e8ca176632612e6a117730409a40f9221d84aa1f76e597a3e697536c"
+      },
+      "selected_codec": "aocx-expr-dict/1",
+      "wire_bytes": 1980,
+      "json_baseline_bytes": 2567,
+      "saved_bytes": 587,
+      "savings_fraction": 0.228672,
+      "candidates": [
+        {
+          "codec": "aocx-expr/1",
+          "status": "passed",
+          "cost": 2313,
+          "errors": [],
+          "bytes": 2313,
+          "characters": 2159,
+          "roundtrip": "passed",
+          "sha256": "06718fe8712c2d5527667b9dfe6bc0adcb5e7ab5143159ad6d0f4eb840f6b15c"
+        },
+        {
+          "codec": "aocx-expr-dict/1",
+          "status": "passed",
+          "cost": 1980,
+          "errors": [],
+          "bytes": 1980,
+          "characters": 1826,
+          "roundtrip": "passed",
+          "sha256": "2411a2dbf4796469a071ec8994ad9ea24cec25783a9f94eb358d33a7b6a15f9f"
+        },
+        {
+          "codec": "json/1",
+          "status": "passed",
+          "cost": 2567,
+          "errors": [],
+          "bytes": 2567,
+          "characters": 2413,
+          "roundtrip": "passed",
+          "sha256": "8084ef59b84a04f5bab152520c97a32ede436ec8932d6e6ad7ef1be07193d74d"
+        }
+      ],
+      "verification": {
+        "status": "passed",
+        "fidelity": "exact",
+        "recovery": "self-contained",
+        "scope": "context-values",
+        "source_verified": true,
+        "logic_preserved": true,
+        "target_sha256": "db18c402085f4a5126293614eb6a5390c73ba449e0191246cd3b6bae8148c8de",
+        "counts": {
+          "records": 4,
+          "relations": 2
+        },
+        "errors": [],
+        "warnings": []
+      }
+    },
+    {
+      "name": "formal",
+      "kind": "repository-example",
+      "counts": {
+        "records": 5,
+        "relations": 4
+      },
+      "source": {
+        "namespace": "example:formal",
+        "snapshot_sha256": "5d3c289544743bd74b764a09e67ff2e92689de3603e79d99164451d74dfb99e5",
+        "records_sha256": "f2eb7ed9698af19bab7c02c3d02f368e166217779fda5c5dbc073c8f73013c3f",
+        "relations_sha256": "4448d5ab64b3f34107574d0aff602efd66936e386c7e7f5a57db6d741476207c"
+      },
+      "selected_codec": "aocx-expr-dict/1",
+      "wire_bytes": 3790,
+      "json_baseline_bytes": 5417,
+      "saved_bytes": 1627,
+      "savings_fraction": 0.300351,
+      "candidates": [
+        {
+          "codec": "aocx-expr/1",
+          "status": "passed",
+          "cost": 4453,
+          "errors": [],
+          "bytes": 4453,
+          "characters": 4125,
+          "roundtrip": "passed",
+          "sha256": "b30de972690ac72e48f8161d09797be5bfd6c26c01d7b9ffe2eea7008a1c6cde"
+        },
+        {
+          "codec": "aocx-expr-dict/1",
+          "status": "passed",
+          "cost": 3790,
+          "errors": [],
+          "bytes": 3790,
+          "characters": 3462,
+          "roundtrip": "passed",
+          "sha256": "95a7bcad32f2dc02b0f15357e5b5ecc4a07f761affcc003d73645ff0f3b940c7"
+        },
+        {
+          "codec": "json/1",
+          "status": "passed",
+          "cost": 5417,
+          "errors": [],
+          "bytes": 5417,
+          "characters": 5097,
+          "roundtrip": "passed",
+          "sha256": "c2023f848cb98e1a492c31fe96ab108c9231edb2e925f93388419da8bbe6c9f9"
+        }
+      ],
+      "verification": {
+        "status": "passed",
+        "fidelity": "exact",
+        "recovery": "self-contained",
+        "scope": "context-values",
+        "source_verified": true,
+        "logic_preserved": true,
+        "target_sha256": "5d3c289544743bd74b764a09e67ff2e92689de3603e79d99164451d74dfb99e5",
+        "counts": {
+          "records": 5,
+          "relations": 4
+        },
+        "errors": [],
+        "warnings": []
+      }
+    },
+    {
+      "name": "repeated-context-128",
+      "kind": "synthetic-repetition",
+      "counts": {
+        "records": 128,
+        "relations": 0
+      },
+      "source": {
+        "namespace": "benchmark:repeated-context",
+        "snapshot_sha256": "b6f1730d2c82d010429c52fa192c1e18921c333518c4428ebe4fdeeb52084942",
+        "records_sha256": "9d4721a09ef9ad060b6601dd6e1232a1695e94193ec44a8076178acdaf0c16d1",
+        "relations_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "selected_codec": "aocx-expr-dict/1",
+      "wire_bytes": 15538,
+      "json_baseline_bytes": 55488,
+      "saved_bytes": 39950,
+      "savings_fraction": 0.719975,
+      "candidates": [
+        {
+          "codec": "aocx-expr/1",
+          "status": "passed",
+          "cost": 53192,
+          "errors": [],
+          "bytes": 53192,
+          "characters": 50248,
+          "roundtrip": "passed",
+          "sha256": "0e564a6e34f4dca67b1614db679ad748f507826457b373cbdafa90b424f10b6d"
+        },
+        {
+          "codec": "aocx-expr-dict/1",
+          "status": "passed",
+          "cost": 15538,
+          "errors": [],
+          "bytes": 15538,
+          "characters": 15515,
+          "roundtrip": "passed",
+          "sha256": "68099f61bc4f9e014b04682eb829ed2400c840fa529e58bcb237508a3de0cbac"
+        },
+        {
+          "codec": "json/1",
+          "status": "passed",
+          "cost": 55488,
+          "errors": [],
+          "bytes": 55488,
+          "characters": 52544,
+          "roundtrip": "passed",
+          "sha256": "e879bac117ee9320a32d35ae43041cd5748a60eac7a3c763b9b0c39649eaee43"
+        }
+      ],
+      "verification": {
+        "status": "passed",
+        "fidelity": "exact",
+        "recovery": "self-contained",
+        "scope": "context-values",
+        "source_verified": true,
+        "logic_preserved": true,
+        "target_sha256": "b6f1730d2c82d010429c52fa192c1e18921c333518c4428ebe4fdeeb52084942",
+        "counts": {
+          "records": 128,
+          "relations": 0
+        },
+        "errors": [],
+        "warnings": []
+      }
+    }
+  ]
+}

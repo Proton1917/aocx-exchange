@@ -1,4 +1,8 @@
-"""Regenerate the local, self-contained AOCX/1 JSON Schema documents."""
+"""Regenerate archive schemas, embedding the authored open logic schema.
+
+logic.schema.json and representation.schema.json are maintained as schema
+sources. The generated record and document schemas reuse the logic definition.
+"""
 
 from copy import deepcopy
 from pathlib import Path
@@ -44,6 +48,17 @@ record = schema("record", "AOCX/1 open-vocabulary record", {
     "anchors": {"type": "array", "items": {"type": "object", "additionalProperties": True}},
     "extensions": {},
 }, ["id", "rev", "kind", "text"], {"ref": REF})
+
+# Only an explicit format marker opts a field into the logic contract.
+# Other existing values of an open `logic` field retain their own vocabulary.
+logic = json.loads((ROOT / "logic.schema.json").read_text(encoding="utf-8"))
+record["$defs"].update(deepcopy(logic["$defs"]))
+record["properties"]["logic"] = {
+    "if": {"type": "object", "required": ["format"],
+           "properties": {"format": {"const": "aocx-logic/1"}}},
+    "then": {key: deepcopy(value) for key, value in logic.items()
+             if key not in ("$schema", "$id", "$defs")},
+}
 
 relation = schema("relation", "AOCX/1 typed directed relation", {
     "id": NAME, "kind": NAME,
@@ -108,6 +123,15 @@ view = schema("babeltele-view", "AOCX/1 task-conditioned experimental view", {
 }, ["format", "version", "codec", "namespace", "source_records_sha256", "source_relations_sha256", "task", "producer",
     "consumer", "entries", "evaluation"], {"ref": REF})
 
+evaluation = schema("view-evaluation", "AOCX view and source bound evaluation evidence", {
+    "format": {"const": "AOCX-EVALUATION"}, "version": {"const": "1.0"},
+    "view_sha256": HASH, "source_snapshot_sha256": HASH,
+}, ["format", "version", "view_sha256", "source_snapshot_sha256"])
+evaluation["description"] = (
+    "A hashed bundle asset binding the complete view except its evaluation member "
+    "and the full source context snapshot. Evidence fields are supplied by the host. "
+    "A bound report requires host evaluation before semantic eligibility is granted.")
+
 # This optional domain schema introduces local shape checks without closing
 # the core's record kinds, states or extension vocabulary.
 document = deepcopy(record)
@@ -128,7 +152,8 @@ for filename, value in {
     "manifest.schema.json": manifest,
     "babeltele-view.schema.json": view,
     "document-profile.schema.json": document,
+    "view-evaluation.schema.json": evaluation,
 }.items():
-    (ROOT / filename).write_text(json.dumps(value, ensure_ascii=False, indent=2) + "\n")
+    (ROOT / filename).write_text(json.dumps(value, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
-print("Generated five self-contained JSON Schema 2020-12 files.")
+print("Generated six self-contained JSON Schema 2020-12 files; retained two authored schemas.")

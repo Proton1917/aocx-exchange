@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:aocx:schema:view-evaluation:1.0",
+  "title": "AOCX view and source bound evaluation evidence",
+  "type": "object",
+  "properties": {
+    "format": {
+      "const": "AOCX-EVALUATION"
+    },
+    "version": {
+      "const": "1.0"
+    },
+    "view_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "source_snapshot_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    }
+  },
+  "required": [
+    "format",
+    "version",
+    "view_sha256",
+    "source_snapshot_sha256"
+  ],
+  "additionalProperties": true,
+  "description": "A hashed bundle asset binding the complete view except its evaluation member and the full source context snapshot. Evidence fields are supplied by the host. A bound report requires host evaluation before semantic eligibility is granted."
+}
