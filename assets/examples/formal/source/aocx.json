@@ -1,0 +1,52 @@
+{
+  "format": "AOCX",
+  "version": "1.0",
+  "namespace": "example:formal",
+  "records": "records.jsonl",
+  "relations": "relations.jsonl",
+  "heads": {
+    "formal/vocabulary": "1",
+    "formal/premise": "2",
+    "formal/claim": "1",
+    "formal/idea": "1"
+  },
+  "profiles": [
+    "core/1"
+  ],
+  "required_profiles": [
+    "core/1"
+  ],
+  "assets": [
+    {
+      "path": "attachments/source.txt",
+      "sha256": "76b58dea7d26f82d4bc4acb02e114bfcbe6d712ce23d62058e1ab9b6308b64ca",
+      "bytes": 336,
+      "role": "attachment"
+    },
+    {
+      "path": "records.jsonl",
+      "sha256": "f2eb7ed9698af19bab7c02c3d02f368e166217779fda5c5dbc073c8f73013c3f",
+      "bytes": 3881,
+      "role": "records"
+    },
+    {
+      "path": "relations.jsonl",
+      "sha256": "4448d5ab64b3f34107574d0aff602efd66936e386c7e7f5a57db6d741476207c",
+      "bytes": 600,
+      "role": "relations"
+    }
+  ],
+  "origins": [
+    {
+      "id": "authored-source",
+      "format": "text/plain",
+      "asset": "attachments/source.txt",
+      "root": ""
+    }
+  ],
+  "extensions": {
+    "example": true,
+    "domain_semantics": "author-declared",
+    "display_language": "自由 / open"
+  }
+}

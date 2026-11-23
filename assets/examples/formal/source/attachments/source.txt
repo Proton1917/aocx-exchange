@@ -1,0 +1,4 @@
+原神（GenshinImpact）：本例声明它是开发商自研的开放世界冒险游戏。
+This is an authored classification example with explicit domain predicates.
+P' = zh(S[x="GenshinImpact"]⊢x∈{y|SelfDev(Dev(x),y)∧OpenAdvGame(y)})
+自由备注 / open note: 保留原文、条件、引用、未知字段与探索性想法。

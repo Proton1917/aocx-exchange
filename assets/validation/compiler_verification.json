@@ -1,0 +1,83 @@
+{
+  "format": "AOCX-COMPILER-VERIFICATION",
+  "version": "1.0",
+  "status": "passed",
+  "executed_at": "2026-11-23T12:23:20.462385+00:00",
+  "python": "3.12.14",
+  "base_commit": "770425050ec980d589559978ca184387d5257cee",
+  "input_scope": "Working tree implementation and examples identified by source_files SHA-256 values",
+  "checks": {
+    "unittest": {
+      "status": "passed",
+      "command": "python3 -m unittest discover -s scripts/tests -v",
+      "tests": 103,
+      "elapsed_seconds": 1.387,
+      "returncode": 0,
+      "log": "assets/validation/compiler_tests.txt",
+      "executed_at": "2026-11-23T12:23:20.462385+00:00"
+    },
+    "formal_reproduction": {
+      "status": "passed",
+      "generated_files": 11,
+      "command": "python3 assets/examples/compile_example.py --out NEW_DIRECTORY",
+      "comparison": "All generated source and representation bytes match; README is authored separately",
+      "independent_recovery": "Source directory removed before decoding by the example script"
+    },
+    "schema_generation": {
+      "status": "passed",
+      "generated": 6,
+      "authored": 2,
+      "command": "python3 assets/schemas/build_schemas.py",
+      "comparison": "All eight schema files unchanged"
+    },
+    "diff_check": {
+      "status": "passed",
+      "command": "git diff --check",
+      "scope": "Tracked changes and every new file"
+    }
+  },
+  "source_files": {
+    ".github/workflows/test.yml": "50267b6bfbfebe39dc1f5ac275e5b10028c022724fc8faabe662a51fb74d1720",
+    "assets/examples/compile_example.py": "ac5ff36c89dacdc7d6a0df6119251c58d2d4d865cea9561d2ace337f3801e97a",
+    "assets/examples/formal/source/aocx.json": "e8e5964a3ffcff13f5ebe1f5ca730b093208825727b67f995542c581b6178696",
+    "assets/examples/formal/source/attachments/source.txt": "76b58dea7d26f82d4bc4acb02e114bfcbe6d712ce23d62058e1ab9b6308b64ca",
+    "assets/examples/formal/source/records.jsonl": "f2eb7ed9698af19bab7c02c3d02f368e166217779fda5c5dbc073c8f73013c3f",
+    "assets/examples/formal/source/relations.jsonl": "4448d5ab64b3f34107574d0aff602efd66936e386c7e7f5a57db6d741476207c",
+    "assets/schemas/babeltele-view.schema.json": "5e563f21f665b5750a2a59423300a4293b58d66acf957e9c959a8450697bd9b4",
+    "assets/schemas/build_schemas.py": "abf06a3e2e6b535d012b9ce2fd6fad7687939ba721207a60c2551459b4268645",
+    "assets/schemas/document-profile.schema.json": "81df99cbc87e1ef42a3cfe21baa6652097cd558b0c50debcccb646db7b8e244b",
+    "assets/schemas/logic.schema.json": "ee228548e4973d941ca1d3eb521774893407aabf30639bc34cc19d3982517961",
+    "assets/schemas/manifest.schema.json": "043cd71be178bcf46058a675af56938ce5ec14d0872f56c7e8d1f0caed041891",
+    "assets/schemas/record.schema.json": "12f4c5599c4116c4b908af4fa4f3ff3ac94ecd547bfb1374b682f931a4a78044",
+    "assets/schemas/relation.schema.json": "07438b6da03f20bb435e75ff8ef0a274a5a92f232269d2a1878286182d7fb9e2",
+    "assets/schemas/representation.schema.json": "161221abfce057a2a45fc2a0b2353fa41b51967a028f504e4827d80bf359bfc9",
+    "assets/schemas/view-evaluation.schema.json": "0473d95ba49b10dc48b85e34e874e9b986188ef03473c2d005beb8406eba55d8",
+    "assets/validation/measure_compiler.py": "b9a685a0eac9614b956c6ff782702ceaa64d81cc9083c2746f871b2ed71736bb",
+    "scripts/adapters/__init__.py": "2d4379aaf4a651d5fa19f35a894e3f4bcaf0291f318b55eba314721c3d037e5d",
+    "scripts/adapters/aoci.py": "929cfe572b1c56a7751855012fad3a2c68304d3b8b5580a5fb1618428c433383",
+    "scripts/adapters/gbcx.py": "9b894eaae98b0fd25ee30f11a5db72da7bf10829333ed8ccad44c32d1185ab45",
+    "scripts/aocx.py": "3fe64b29414bfddb2ee2211e61cf489b84971e94869b87afa1bd52045e466792",
+    "scripts/aocx_core/__init__.py": "2b54c7339d818b4338107dd3c3b8a28b8ed18e385d406cfea47d960d74739604",
+    "scripts/aocx_core/cli.py": "52c59dd901dc76914a88a82018443cd2a18782fec809c136d3a67d44e385889e",
+    "scripts/aocx_core/codecs.py": "287b23595002d3a3b18423288e4c45c22d945f7ef686c9076baac2ce9ea6e461",
+    "scripts/aocx_core/common.py": "5d4ccf621494b012bd9ddc8543eaccf4b81cb9035989697d5a801aaa597e1833",
+    "scripts/aocx_core/contracts.py": "7b83d6c2534dba45fdb5ec89c7376831e873cea0c8a303b0212bdb758eda4855",
+    "scripts/aocx_core/legacy.py": "46dcb137702b88222c021be725470dcf354c96341d397e7dac72ec52c212a8d4",
+    "scripts/aocx_core/logic.py": "2bd548dd0b90d896173d9799db4b077b18cb61e754c6733d16d2e3444e91ca00",
+    "scripts/aocx_core/model.py": "51dafc6905a9668b2a02f92afc969945fe1a7e5e7cd3ee95a24630b512996889",
+    "scripts/aocx_core/negotiation.py": "4d5ef3a621916a0c88afad948f9338f06ecfaf155d0cea5a5aeb3125b656dff7",
+    "scripts/aocx_core/optimizer.py": "82a8878e20da60286f8fbe1714be5afaf903b93a259531ad2458ba4143e70617",
+    "scripts/aocx_core/storage.py": "0156338330a53db7f0ead9eb6d6ee588d9a296385c6edfee9e6a8d9754605c06",
+    "scripts/aocx_core/views.py": "d54048c0a494ca7a5644edc899d4c0ee3a7c76be8c3d7aeeb65f3e6211f7dc88",
+    "scripts/tests/fixtures/gbcx/verify_projection.py": "14b8558bef30f2432773fe51e3485426cc45d4d0df7baa7ad4e526300b2729fb",
+    "scripts/tests/test_aoci_protected.py": "95d2160920f31815a9f368afe8152dd7f4cda00712b02c5626b8de24bdf8bfaf",
+    "scripts/tests/test_codecs.py": "86a71c82ad60372f6be1de17a5d70657c5908e81b808da2b1bf8c28ee8990fce",
+    "scripts/tests/test_compiler_cli.py": "08ab24523efb579acfc7a8e1e1d68eb390922756e5f04db09b1d183396380fd2",
+    "scripts/tests/test_core.py": "9a2d1b1ecfe16bf21f0b113fffb52ff339fe8a637ed836b1dabb975b62c976e5",
+    "scripts/tests/test_logic.py": "0a83d51e3e5304c0471ed373eed8c30bf9b69f2538b8c2e4787912f5ee9ade25",
+    "scripts/tests/test_optimizer.py": "53c3d2a6f08538feb2359f6418ca34122918fc1e2881b63d24084d911fc23b89",
+    "scripts/tests/test_schemas.py": "f0f2c37d5d657c548e3d9d6c9fae98d73866bf20f4d5dc95aaced8267b74f9f7",
+    "scripts/tests/test_view_evidence.py": "8d61583583d0a8c3ee2ba047da65fb4d72b0fe9927f2a46f98c51a190a4b5184"
+  },
+  "measurements": "assets/validation/representation_compiler.json"
+}

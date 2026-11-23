@@ -1,0 +1,4 @@
+{"id":"formal/claim-premise","kind":"depends_on","from":{"id":"formal/claim","rev":"1"},"to":{"id":"formal/premise","rev":"1"}}
+{"id":"formal/premise-vocabulary","kind":"assumes","from":{"id":"formal/premise","rev":"1"},"to":{"id":"formal/vocabulary","rev":"1"}}
+{"id":"formal/premise-revision","kind":"supersedes","from":{"id":"formal/premise","rev":"2"},"to":{"id":"formal/premise","rev":"1"}}
+{"id":"formal/exploration","kind":"domain.inspires","from":{"id":"formal/claim","rev":"1"},"to":{"id":"formal/idea","rev":"1"},"future.relation":{"direction":"claim-to-idea","note":"开放关系类型"}}

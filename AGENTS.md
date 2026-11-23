@@ -3,7 +3,7 @@
 ## 格式与实现
 
 - 以 [AOCX/1 核心规范](references/specification.md)和 [CLI 入口](scripts/aocx.py)核对数据契约。修改公开字段、关系方向、修订语义或编码时，同步维护受影响的规范、JSON Schema、示例和检查。
-- 通用交换逻辑放在 `scripts/aocx.py`，旧格式解析及字段映射放在 `scripts/adapters/`。参考实现使用 Python 标准库。领域特定规则通过对应 profile 描述，通用记录保留自由文本、未知类型与未知字段。
+- `scripts/aocx.py` 保持 CLI 与历史 Python API 入口；`scripts/aocx_core/` 按保全契约、图模型、编码器、优化器、逻辑结构、存储和视图分工，旧格式映射放在 `scripts/adapters/`。候选先实际解码并核对保全契约，再比较完整传输成本。核心使用 Python 标准库，token 度量按需接入具体 tokenizer。领域规则通过 profile 描述，通用记录保留自由文本、未知类型与未知字段。模块职责见[架构说明](references/architecture.md)。
 - 导入 AOCI 或 GBCX 时保留原始字节和来源，投影声明映射范围。选择交接记录时保留固定修订的前提及保护字段。分别报告结构检查与读者任务评估。[兼容规则](references/profiles.md) · [验证方法](references/validation.md)
 - 使用 `python3 -m unittest discover -s scripts/tests -v` 运行现有契约测试。依变更范围选择检查，涉及档案操作时遵循任务授权的摘要范围。转换和恢复写入任务目录内的新路径。
 

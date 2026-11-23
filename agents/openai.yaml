@@ -1,12 +1,12 @@
 interface:
-  display_name: AOCX Exchange
-  short_description: 整理项目与研究上下文，支持 AOCI 索引、GBCX 档案和 BabelTele 视图
-  default_prompt: 使用 $aocx-exchange 整理指定范围的上下文，按交接需求选择档案和阅读视图。
-  icon_small: assets/icon.svg
-  icon_large: assets/icon.svg
+  display_name: "AOCX Exchange"
+  short_description: "以保全契约编译可恢复上下文，支持逻辑结构、有限候选优化与原件恢复"
+  default_prompt: "使用 $aocx-exchange 将指定上下文编译为可恢复表示，核验保全契约并比较完整传输成本。"
+  icon_small: "assets/icon.svg"
+  icon_large: "assets/icon.svg"
 policy:
   products:
-  - chatgpt
-  - codex
-  - atlas
+  - "chatgpt"
+  - "codex"
+  - "atlas"
   allow_implicit_invocation: true
