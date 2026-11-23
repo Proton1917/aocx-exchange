@@ -1,7 +1,7 @@
 {
   "version": 1,
   "created_at": "2026-11-23T07:44:20Z",
-  "updated_at": "2026-11-23T07:45:57Z",
+  "updated_at": "2026-11-23T07:51:54Z",
   "files": {
     ".gitattributes": {
       "role": "index",
@@ -29,21 +29,21 @@
     },
     "SKILL.md": {
       "role": "index",
-      "sha256": "ec154849e42ef9615517a942922a2c61339e96c21fb7aa7e7847db60a13c34c6",
-      "size": 3120,
-      "normalized_sha256": "ec154849e42ef9615517a942922a2c61339e96c21fb7aa7e7847db60a13c34c6"
+      "sha256": "b83c33cc6d837694304f1881b8b105a7e0fb0479947e19410e57c6b03d0d8cd2",
+      "size": 3932,
+      "normalized_sha256": "b83c33cc6d837694304f1881b8b105a7e0fb0479947e19410e57c6b03d0d8cd2"
     },
     "agents/openai.yaml": {
       "role": "index",
-      "sha256": "2edb339085a0f02338595629417849a75bebd66ccda31bfc60cd48d9f6dfa272",
-      "size": 459,
-      "normalized_sha256": "2edb339085a0f02338595629417849a75bebd66ccda31bfc60cd48d9f6dfa272"
+      "sha256": "355190625acb2f7e691e9f953e2520c050335968e59dc008876734d6f76430e4",
+      "size": 413,
+      "normalized_sha256": "355190625acb2f7e691e9f953e2520c050335968e59dc008876734d6f76430e4"
     },
     "aoci.code.txt": {
       "role": "index",
-      "sha256": "2f7e7d1dc7e8c7755b43cb3832f41740ffd9a338aad96b496071791553a58e69",
-      "size": 12463,
-      "normalized_sha256": "2f7e7d1dc7e8c7755b43cb3832f41740ffd9a338aad96b496071791553a58e69"
+      "sha256": "123abf4717bcaf98539779fc85d04c3fc83da7a15cbfb86daf71c708316f5e0a",
+      "size": 12799,
+      "normalized_sha256": "123abf4717bcaf98539779fc85d04c3fc83da7a15cbfb86daf71c708316f5e0a"
     },
     "aoci.meta.txt": {
       "role": "index",
@@ -245,9 +245,9 @@
     },
     "references/mcp-binding.md": {
       "role": "index",
-      "sha256": "a29ca611b5fd9d3652226572c42994f69069dbe3c27d4830affcc533e7e4418d",
-      "size": 2603,
-      "normalized_sha256": "a29ca611b5fd9d3652226572c42994f69069dbe3c27d4830affcc533e7e4418d"
+      "sha256": "0c107f6e75849426674c254cf0d96189ef28812ec6792a4a17a8f2f0580e1ad9",
+      "size": 3126,
+      "normalized_sha256": "0c107f6e75849426674c254cf0d96189ef28812ec6792a4a17a8f2f0580e1ad9"
     },
     "references/profiles.md": {
       "role": "index",
@@ -269,9 +269,9 @@
     },
     "references/validation.md": {
       "role": "index",
-      "sha256": "070c8ea7054a14632c1f295ceea501a8d692996de5c549a14f1253cf10f61fe4",
-      "size": 3191,
-      "normalized_sha256": "070c8ea7054a14632c1f295ceea501a8d692996de5c549a14f1253cf10f61fe4"
+      "sha256": "186dfb8ce8f6d3e2601d8d42715f91f0ffef7d9c2128eea8ce0c5718cbfa9fa9",
+      "size": 3911,
+      "normalized_sha256": "186dfb8ce8f6d3e2601d8d42715f91f0ffef7d9c2128eea8ce0c5718cbfa9fa9"
     },
     "scripts/adapters/__init__.py": {
       "role": "index",

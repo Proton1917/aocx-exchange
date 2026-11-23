@@ -2,30 +2,30 @@
 
 ## 职责
 
-AOCI 继续提供软件认知 MCP；AOCX 核心负责转换、档案和视图检查；宿主适配层连接两者；薄 Skill 按需指导调用。原生批准、CAS、Baseline 与恢复流程保持其原有语义。
+AOCI MCP 负责项目索引的日常查阅与维护。Codex 在目标项目的会话中调用已配置的 AOCI MCP。需要交接时，Codex 调用本地 AOCX 命令，将选定来源转换为档案或阅读视图。索引批准、CAS、基线与恢复由原生 AOCI 流程处理。
 
-本版提供离线适配器与可导入 Python 核心，以下规则定义在线宿主的接入方式。服务端工具 schema 仍以原系统为准。
+AOCX 提供离线适配器和可导入的 Python 模块。MCP 工具的调用方式以服务端 schema 和运行规则为准。
 
 ## 原生工具与读取
 
-读取：aoci_rules、aoci_overview、aoci_get_entries、aoci_search。
+通过 `aoci_rules` 获取会话规则。完整索引使用 `aoci_overview`，定点查询使用 `aoci_get_entries` 或 `aoci_search`。索引维护使用 `aoci_maintain` 和当前工具返回的写入流程。标签字典等元信息可通过 `aoci_header` 查阅。
 
-维护：aoci_maintain、aoci_update_entry、aoci_remove_entry。
+完整 Whole-Index 请求沿 `next_cursor` 读取至 `completed=true`，保持范围、范围标识和原始顺序，并按原生合同确认交付和提交认知验证。`check_only=true` 返回检查点事实。
 
-证据：aoci_header、aoci_report。
+## 索引交接
 
-完整 Whole-Index 请求沿 next_cursor 读取至 completed=true 且 continuation_required=false，保留相同 scope、scope identity、原始顺序和交付证据。check_only=true 是检查点，其范围随元数据保留。
+以含 `aoci.txt` 的项目目录或 AOCI 快照 ZIP 作为输入。目录导入读取 `aoci.txt` 及其声明的卷。ZIP 导入将输入档案原样保存在结果中，制作快照时按接收方的授权范围选择文件。操作会计算和核验 SHA-256，摘要范围以宿主授权为准。[检查方法](validation.md#程序)
 
-使用原生完整认知接纳时，先完成原生交付与确认，再生成 AOCX 投影及模型间视图。原生正文、receipt 和 attestation 按其契约处理，AOCX 转换结果只声明自己的转换与检查状态。
+将 `AOCX_SKILL_DIR` 设为技能入口 `SKILL.md` 所在目录的绝对路径。在目标项目根目录运行以下命令，输出写入新目录。
 
-## 宿主流程
+```sh
+python3 "$AOCX_SKILL_DIR/scripts/aocx.py" \
+  import-aoci . aoci-exchange --namespace project-name
+```
 
-1. 根据 AOCI 规则选择读取范围，记录请求与源身份。
-2. 收集该交付模式要求的完整结果；版本变化或缺失交付按原生规则处理。
-3. 保存原文本/JSON 响应，声明完整快照或局部检索范围。
-4. 原文件交给适配器；其他原始响应可生成 source/evidence 记录，并把完整响应放入 body。
-5. 运行 AOCX 检查，为接收方选择完整、紧凑或经评估的语言视图。
-6. 接收方据源身份回取详情；软件认知修改进入原生维护流程。
+导入保留原索引字节和条目身份，将职责、关系、接口与约束映射为 AOCX 记录。局部 MCP 查询结果可将原始响应存入 `source` 或 `evidence` 记录的 `body`，并标明来源项目和查询范围。使用完整档案或 `capsule --select` 生成的阅读视图时，根据导入报告识别映射范围和缺失的关联目标，并按接收方权限核对交付内容。
+
+原生正文、交付收据和认知验证按 AOCI 的合同处理。AOCX 报告记录转换和档案检查的结果。接收方可以按来源身份回取详情。
 
 ## MCP 载荷
 

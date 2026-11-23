@@ -10,13 +10,16 @@
 
 ## 程序
 
-```bash
-python3 scripts/aocx.py validate exchange
-python3 scripts/aocx.py capsule exchange --full --out full.aocx
-python3 scripts/aocx.py check-view exchange language-view.json
-python3 scripts/aocx.py merge-check base left right
-python3 -m unittest discover -s scripts/tests -v
+将 `AOCX_SKILL_DIR` 设为技能入口 `SKILL.md` 所在目录的绝对路径。输入和输出路径以任务工作目录为基准。`create`、`import-aoci` 和 `import-gbcx` 计算资源摘要并检查生成的档案。`validate`、`restore`、`capsule`、`check-view` 和 `merge-check` 核验所读档案的资源摘要。`capsule` 和 `restore` 还返回各自输出文件的 SHA-256。操作范围以宿主对数据和摘要用途的授权为准。
+
+```sh
+python3 "$AOCX_SKILL_DIR/scripts/aocx.py" validate exchange
+python3 "$AOCX_SKILL_DIR/scripts/aocx.py" capsule exchange --full --out full.aocx
+python3 "$AOCX_SKILL_DIR/scripts/aocx.py" check-view exchange language-view.json
+python3 "$AOCX_SKILL_DIR/scripts/aocx.py" merge-check base left right
 ```
+
+测试套件也会计算摘要并创建临时文件。按受影响的行为选择测试，并将临时目录设在任务允许写入的范围内。全量测试入口为 `python3 -m unittest discover -s "$AOCX_SKILL_DIR/scripts/tests" -v`。
 
 错误定位到对象/修订、字段或资源路径。修复时保留原来源。未知必需 profile 返回不支持的语义范围；保存模式保留数据。程序通过表明所执行的数据契约检查通过。
 

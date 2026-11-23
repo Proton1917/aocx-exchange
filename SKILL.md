@@ -5,23 +5,23 @@ description: "Prepare, import, migrate, compress, or validate context for anothe
 
 # AOCX Exchange
 
-Use `scripts/aocx.py` as the executable core. Load a reference only for the operation at hand. Keep existing AOCI MCP tools as the software cognition service.
+Use the project's AOCI MCP for routine index reads and maintenance. For an explicit context handoff, use the local AOCX CLI to import source data, create an exchange archive, or generate a reader view. Follow the [AOCI binding](references/mcp-binding.md) for source scope and native delivery requirements.
 
 ## Workflow
 
 1. Identify the source, intended reader, task scope, and requested fidelity. Preserve existing artifacts as inputs; write conversions to new directories.
 2. Preserve exploratory ideas in arbitrary `text` or `body`. Give each record `id`, `rev`, `kind`, and `text`. Add conditions, scope, evidence, quantities, and relations when relevant. Keep new domain kinds and unknown fields.
-3. Choose the operation:
+3. Set `AOCX_SKILL_DIR` to the absolute directory containing this `SKILL.md`. Resolve `scripts/aocx.py` from that directory and keep input and output paths relative to the task's working directory. Archive and view operations compute or verify SHA-256. Apply the host's authorization rules to the operation and its inputs. For routine AOCI reads, use the native MCP tools.
 
 ```bash
-python3 scripts/aocx.py create --records records.jsonl --relations relations.jsonl --out exchange --namespace project-name
-python3 scripts/aocx.py import-aoci path/to/cognition exchange --namespace project-name
-python3 scripts/aocx.py import-gbcx archive.zip exchange --namespace project-name
-python3 scripts/aocx.py validate exchange
-python3 scripts/aocx.py capsule exchange --out context.aocx
+python3 "$AOCX_SKILL_DIR/scripts/aocx.py" create --records records.jsonl --relations relations.jsonl --out exchange --namespace project-name
+python3 "$AOCX_SKILL_DIR/scripts/aocx.py" import-aoci path/to/cognition aoci-exchange --namespace project-name
+python3 "$AOCX_SKILL_DIR/scripts/aocx.py" import-gbcx archive.zip gbcx-exchange --namespace research-project
+python3 "$AOCX_SKILL_DIR/scripts/aocx.py" validate exchange
+python3 "$AOCX_SKILL_DIR/scripts/aocx.py" capsule exchange --out context.aocx
 ```
 
-4. Run `validate` after creation. Resolve hard errors in references, versions, types, paths, and file digests. Preserve uncertainty and open questions as data. Record unsupported profiles and use the exact representation when needed.
+4. Use the creation or import report to check references, versions, data types, paths, and file digests. Use `validate` to check an existing archive. Preserve uncertainty and open questions as data. Record unsupported profiles and use the exact representation when needed.
 5. Generate selected context with its prerequisite closure. Preserve conditions, scope, revisions, states, and protected anchors. Use `--full` for exact JSON-value recovery. Treat a handoff view as a declared projection.
 6. For a BabelTele-style view, retain the exact source and run `check-view`. Report structural validation and reader-task evaluation separately. Use measured reader/model/tokenizer evidence before selecting a semantic view as the sole task context.
 7. Deliver the requested artifact with verification results, compatibility scope, and concrete unresolved references. Persist ordinary deliverables using the active environment's file workflow.
@@ -34,10 +34,10 @@ python3 scripts/aocx.py capsule exchange --out context.aocx
 - [Validation](references/validation.md): executable checks and model-level evaluation.
 - [Research](references/research.md): primary papers, repositories and design decisions.
 
-Schemas and authored examples are in `assets/`. Run implementation checks with:
+Schemas and authored examples are in `assets/`. For implementation checks, choose the relevant tests and set the temporary directory according to [the host's validation scope](references/validation.md#程序). The full suite runs with:
 
 ```bash
-python3 -m unittest discover -s scripts/tests -v
+python3 -m unittest discover -s "$AOCX_SKILL_DIR/scripts/tests" -v
 ```
 
 Keep workflow progress distinct from claim status. Validate declared data contracts; evaluate domain conclusions through their evidence. Preserve native AOCI receipts and governance through the original AOCI workflow.

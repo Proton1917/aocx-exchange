@@ -5,10 +5,10 @@
 .gitignore[FV3T]: F:排除 Python 缓存并保留项目测试记录 | R:- | A:保留 assets/validation/implementation_tests.log | S:-
 AGENTS.md[SW7T]: F:规定本仓库格式变更、契约验证及 AOCI 维护方式 | R:code:references/specification.md,code:references/validation.md | A:项目索引加载和维护入口 | S:原生 AOCI 流程负责本仓库索引写入，AOCX 投影用于交接
 README.md[SU6T]: F:介绍 AOCX、CLI 用法及本仓库 AOCI 索引 | R:code:scripts/aocx.py,code:references/mcp-binding.md | A:创建、导入、检查和恢复档案的示例命令 | S:-
-SKILL.md[SW6T]: F:指导智能体选择上下文交接来源、保真程度与验证方法 | R:code:scripts/aocx.py,code:references/validation.md | A:aocx-exchange 工作流 | S:模型任务效果按指定读者评估，原生 AOCI 收据沿原流程保存
+SKILL.md[SW6T]: F:指导智能体使用 AOCI MCP 查阅和维护索引，并用 AOCX 交接指定上下文 | R:code:references/mcp-binding.md,code:references/validation.md,code:scripts/aocx.py | A:命令入口相对技能目录解析，输入输出相对任务工作目录 | S:档案和视图操作的摘要范围遵循宿主授权；语义视图按指定读者和任务评价
 
 ===/<repository>/agents/===
-openai.yaml[FE4T]: F:声明 AOCX 技能在宿主中的展示与调用方式 | R:code:SKILL.md | A:interface 与 policy | S:-
+openai.yaml[FE4T]: F:声明 Codex 技能展示、交接提示和可用客户端 | R:code:SKILL.md | A:interface 含展示名、简述、提示词与图标；policy 声明 chatgpt、codex、atlas | S:-
 
 ===/<repository>/assets/examples/===
 build_examples.py[XQ5S]: F:生成软件、数学、文档示例及手写语言视图 | R:code:scripts/aocx.py,code:assets/examples/math_view.babeltele.json | A:从仓库根定位核心模块并使用固定的 draft.1 修订 | S:已有示例的记录和关系按 JSON 值比对，发现差异即报错
@@ -57,11 +57,11 @@ gbcx_roundtrip.json[TE5S]: F:记录真实 GBCX 档案与 AOCI 样本的导入和
 verify_legacy_roundtrips.py[TE6S]: F:用显式指定的旧格式资料验证恢复、完整投影和条件闭包 | R:code:scripts/aocx.py,code:assets/validation/gbcx_roundtrip.json | A:要求 --gbcx 和 --work，可选 --aoci 与 --report | S:计数、固定修订和源引用断言绑定已核对样本，更换输入时按其真实范围重定验收标准
 
 ===/<repository>/references/===
-mcp-binding.md[SE7T]: F:说明 AOCI MCP 与 AOCX 宿主适配的职责和数据流 | R:code:scripts/adapters/aoci.py,code:references/profiles.md | A:原生交付、响应保存、投影与回取流程 | S:完整交付沿原生游标和确认合同处理，AOCX 投影只声明自己的转换与检查状态
+mcp-binding.md[SE7T]: F:说明经 AOCI MCP 查阅与维护索引，以及通过本地 AOCX 命令交接索引 | R:code:SKILL.md,code:scripts/adapters/aoci.py,code:references/profiles.md | A:原生交付确认、目录或 ZIP 导入、检查点及局部查询的来源记录 | S:目录导入读取根清单和声明的卷；ZIP 原样保存；索引批准、基线与恢复遵循原生流程
 profiles.md[SE7T]: F:规定 AOCI、GBCX 和语言视图的映射与评估边界 | R:code:scripts/adapters/aoci.py,code:scripts/adapters/gbcx.py,code:references/specification.md | A:原字节恢复、原字段保留、语义投影及修改后原生导出的兼容范围 | S:AOCI R 保留为关联；语言视图同时绑定记录摘要、关系摘要和命名空间
 research.md[SA4T]: F:汇集上下文交换、提示压缩和读者评估研究 | R:code:assets/sources/core_sources.json,code:assets/sources/language_sources.json | A:标明论文结果、参考实现与设计采用范围 | S:-
 specification.md[SB8S]: F:定义 AOCX 记录、关系、修订、档案、紧凑编码与协商契约 | R:code:scripts/aocx.py,code:assets/schemas/build_schemas.py,code:references/profiles.md | A:AOCX 1.0 的 JSONL、档案清单、选择闭包和 profile 扩展 | S:记录身份固定命名空间、对象和修订；普通关系允许环，supersedes 限同一对象且要求无环；存储摘要针对原始字节
-validation.md[SQ6T]: F:定义交换契约检查与读者任务评价方法 | R:code:scripts/aocx.py,code:references/profiles.md | A:结构、领域、语言和端到端成本评估分别记录范围 | S:语义视图评估绑定读者模型、分词器、源版本和实际任务
+validation.md[SQ6T]: F:说明档案与视图的结构检查、摘要行为和读者任务评估 | R:code:scripts/aocx.py,code:references/profiles.md,code:SKILL.md | A:列出生成、核验档案的命令和测试入口，说明临时目录及授权范围 | S:语义视图评估绑定读者模型、分词器、源版本和实际任务
 
 ===/<repository>/scripts/adapters/===
 __init__.py[IE2T]: F:声明旧格式投影模块所在的软件包 | R:- | A:- | S:-
