@@ -1,0 +1,53 @@
+{
+  "source_archive_sha256": "e704ba4e3efe8aaca4311f2ed8d2684a159f39fac7300506ad55c023b91f8424",
+  "source_bytes": 39893676,
+  "primary_records": 422,
+  "relations": 320,
+  "warnings": [],
+  "coverage": {
+    "projected_tables": [
+      "claims.jsonl",
+      "methods.jsonl",
+      "frontier.jsonl",
+      "sources.jsonl",
+      "symbols.jsonl",
+      "tools.jsonl"
+    ],
+    "primary_records": 422,
+    "primary_records_by_table": {
+      "claims.jsonl": 116,
+      "methods.jsonl": 125,
+      "frontier.jsonl": 8,
+      "sources.jsonl": 41,
+      "symbols.jsonl": 27,
+      "tools.jsonl": 105
+    },
+    "other_files": "Retained in exact legacy origin, not expanded into records",
+    "status_scope": "Reported legacy proof/observation state; no new validation of source claims",
+    "evidence_scope": "Exact legacy evidence paths remain in record.body.evidence; files reside in origin",
+    "condition_scope": "Inline assumptions preserved verbatim; condition-bearing prerequisites additionally exposed as pinned reference conditions"
+  },
+  "invariants": {
+    "all_original_primary_objects_equal": true,
+    "all_inline_assumptions_verbatim": true,
+    "all_condition_bearing_references_pinned": true,
+    "empty_local_conditional_R4R009_keeps_three_inherited_conditions": true,
+    "no_checked_status_generated": true,
+    "all_edge_endpoints_resolve": true,
+    "source_archive_unchanged": true,
+    "synthetic_collision_scoping": true,
+    "duplicate_id_rejected": true,
+    "duplicate_json_member_rejected": true,
+    "nonfinite_number_rejected": true,
+    "malformed_assumption_rejected": true,
+    "conditional_without_premises_keeps_unresolved_condition": true,
+    "method_claim_ids_remain_associations": true,
+    "method_states_preserved_in_handoff": true,
+    "symbol_names_and_source_locators_preserved_in_handoff": true,
+    "method_results_next_tests_and_frontier_gaps_preserved_in_handoff": true
+  },
+  "synthetic_records": 8,
+  "synthetic_relations": 6,
+  "adapter_sha256": "9b894eaae98b0fd25ee30f11a5db72da7bf10829333ed8ccad44c32d1185ab45",
+  "relation_semantics": "method claim_ids -> relates_to with native_field=claim_ids; no production asserted"
+}

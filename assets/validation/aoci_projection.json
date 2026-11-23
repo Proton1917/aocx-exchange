@@ -1,0 +1,29 @@
+{
+  "version": "aoci-adapter-check/1",
+  "cases": [
+    "volumes_read_and_semantics",
+    "bom_crlf",
+    "five_fields",
+    "historical_hash_filename_duplicates",
+    "bracketed_filename",
+    "legacy_s_variants_unknown_fields_unresolved_relation",
+    "malformed_root_marker_rejected",
+    "traversal_rejected",
+    "ordinary_duplicate_rejected",
+    "invalid_utf8_rejected",
+    "symlink_asset_rejected",
+    "pinned_upstream_actual_projection"
+  ],
+  "actual": {
+    "commit": "3d8e4b0048b7ae93d671ffae39db73a44db434d3",
+    "records": 497,
+    "entities": 494,
+    "relations": 1013,
+    "warnings": {
+      "unresolved_native_relation": 5
+    }
+  },
+  "case_count": 12,
+  "status": "passed",
+  "scope": "clean-room projection and path boundaries; native AOCI binary/governance not executed"
+}

@@ -1,0 +1,166 @@
+{
+  "scope": "Structure, projection fidelity, exact origin restoration, and pinned condition closure",
+  "core_sha256": "69a0b6cbd5bfe2647995df8a7978b188c15002832e1b9fe1fa02a161ba744b94",
+  "adapter_sha256": {
+    "gbcx": "9b894eaae98b0fd25ee30f11a5db72da7bf10829333ed8ccad44c32d1185ab45",
+    "aoci": "b1567b1b03fa6c2ce755a8a60fa327c7ebb55113b8f13145eb7b1db3bc6e1226"
+  },
+  "gbcx": {
+    "source_sha256": "e704ba4e3efe8aaca4311f2ed8d2684a159f39fac7300506ad55c023b91f8424",
+    "source_bytes": 39893676,
+    "import": {
+      "status": "passed",
+      "errors": [],
+      "warnings": [],
+      "namespace": "acceptance:gbcx-real",
+      "records_sha256": "af54f0e8e5f5d5074812a7811a91672d7005887381e191d4fbf3bd79d6ec3370",
+      "relations_sha256": "eba9a3232a0d118a28645332b0ce562025a3546bc1e406d7ae8e1f330b0bd508",
+      "counts": {
+        "records": 422,
+        "relations": 320,
+        "assets": 4
+      },
+      "preserve_only": true,
+      "required_profiles_supported": true,
+      "scope": "Structure, pinned references and exact stored bytes; content truth and actions are external",
+      "path": "/workspace/scratch/84668c821a62/universal_exchange_work/acceptance/legacy-roundtrip-40a5bfd4cd/gbcx",
+      "import_warnings": [],
+      "origin_sha256": "e704ba4e3efe8aaca4311f2ed8d2684a159f39fac7300506ad55c023b91f8424"
+    },
+    "validation": {
+      "status": "passed",
+      "errors": [],
+      "warnings": [],
+      "namespace": "acceptance:gbcx-real",
+      "records_sha256": "af54f0e8e5f5d5074812a7811a91672d7005887381e191d4fbf3bd79d6ec3370",
+      "relations_sha256": "eba9a3232a0d118a28645332b0ce562025a3546bc1e406d7ae8e1f330b0bd508",
+      "counts": {
+        "records": 422,
+        "relations": 320,
+        "assets": 4
+      },
+      "preserve_only": false,
+      "required_profiles_supported": true,
+      "scope": "Structure, pinned references and exact stored bytes; content truth and actions are external"
+    },
+    "full_capsule": {
+      "records": 422,
+      "relations": 320,
+      "all_json_values_equal": true
+    },
+    "handoff_capsule": {
+      "method_states_retained": 125,
+      "symbol_names_retained": 27,
+      "method_results_and_next_tests_retained": true,
+      "frontier_missing_inputs_and_next_steps_retained": true,
+      "source_urls_and_fixed_version_locators_retained": true
+    },
+    "selected_capsule": {
+      "records": 11,
+      "relations": 22,
+      "target": "R4R009",
+      "three_direct_inherited_conditions": [
+        "R4R006",
+        "R4R007",
+        "R4R008"
+      ],
+      "all_pinned_condition_references_present": true
+    },
+    "exact_restore": {
+      "bytes": 39893676,
+      "sha256": "e704ba4e3efe8aaca4311f2ed8d2684a159f39fac7300506ad55c023b91f8424"
+    },
+    "input_unchanged": true
+  },
+  "aoci": {
+    "input_files": {
+      "aoci.txt": {
+        "bytes": 1047,
+        "sha256": "9296aec664feed3f179b85da2790e20fd4542de10d994418ff4901407900f190"
+      },
+      "aoci.meta.txt": {
+        "bytes": 1137,
+        "sha256": "a7818102f6ae1ee75c78556aaf21e1b8bea48e3305d76c796dcfb467ded4b9c7"
+      },
+      "aoci.code.txt": {
+        "bytes": 238573,
+        "sha256": "e417a9223f67f2520b9fd2a1e295fd7f4a945bfef9bc1c67cdb37a0d25dd1155"
+      }
+    },
+    "import": {
+      "status": "passed",
+      "errors": [],
+      "warnings": [],
+      "namespace": "acceptance:aoci-real",
+      "records_sha256": "c5a5c5fd605985be1672b4b5d7a688a2d4a50b41b4b1f059bb91764fc3f600b7",
+      "relations_sha256": "01e4a8a7586b2bb8fecbcedcfcca8fc57ef1ff145aa177539614c80acff652d5",
+      "counts": {
+        "records": 497,
+        "relations": 1013,
+        "assets": 4
+      },
+      "preserve_only": true,
+      "required_profiles_supported": true,
+      "scope": "Structure, pinned references and exact stored bytes; content truth and actions are external",
+      "path": "/workspace/scratch/84668c821a62/universal_exchange_work/acceptance/legacy-roundtrip-40a5bfd4cd/aoci",
+      "import_warnings": [
+        {
+          "code": "unresolved_native_relation",
+          "path": "aoci.code.txt",
+          "source": "code:README.md",
+          "target": "code:textassets/en-US/templates/volume-root.txt.tmpl",
+          "line": 15
+        },
+        {
+          "code": "unresolved_native_relation",
+          "path": "aoci.code.txt",
+          "source": "code:README.md",
+          "target": "code:textassets/en-US/templates/volume-meta.txt.tmpl",
+          "line": 15
+        },
+        {
+          "code": "unresolved_native_relation",
+          "path": "aoci.code.txt",
+          "source": "code:README.zh-CN.md",
+          "target": "code:textassets/zh-CN/templates/volume-root.txt.tmpl",
+          "line": 16
+        },
+        {
+          "code": "unresolved_native_relation",
+          "path": "aoci.code.txt",
+          "source": "code:README.zh-CN.md",
+          "target": "code:textassets/zh-CN/templates/volume-meta.txt.tmpl",
+          "line": 16
+        },
+        {
+          "code": "unresolved_native_relation",
+          "path": "aoci.code.txt",
+          "source": "code:docs/supply-chain.md",
+          "target": "code:internal/dbevidence/driver_pin_contract_test.go",
+          "line": 46
+        }
+      ],
+      "origin_sha256": "fa9022360845388f699a549ae5b937534e47a14b5e0002a4c444e129dc7b4667"
+    },
+    "validation": {
+      "status": "passed",
+      "errors": [],
+      "warnings": [],
+      "namespace": "acceptance:aoci-real",
+      "records_sha256": "c5a5c5fd605985be1672b4b5d7a688a2d4a50b41b4b1f059bb91764fc3f600b7",
+      "relations_sha256": "01e4a8a7586b2bb8fecbcedcfcca8fc57ef1ff145aa177539614c80acff652d5",
+      "counts": {
+        "records": 497,
+        "relations": 1013,
+        "assets": 4
+      },
+      "preserve_only": false,
+      "required_profiles_supported": true,
+      "scope": "Structure, pinned references and exact stored bytes; content truth and actions are external"
+    },
+    "all_native_file_bytes_restored": true,
+    "inputs_unchanged": true
+  },
+  "core_sha256_after": "69a0b6cbd5bfe2647995df8a7978b188c15002832e1b9fe1fa02a161ba744b94",
+  "status": "passed"
+}

@@ -1,0 +1,168 @@
+{
+  "format": "AOCI-source-audit/1",
+  "scope": "Selected read-only source files and actual upstream index fixture; no native binary execution",
+  "files": [
+    {
+      "repository": "aoci-spec/aoci-code",
+      "commit": "3d8e4b0048b7ae93d671ffae39db73a44db434d3",
+      "path": "README.md",
+      "url": "https://github.com/aoci-spec/aoci-code/blob/3d8e4b0048b7ae93d671ffae39db73a44db434d3/README.md",
+      "bytes": 78638,
+      "sha256": "5498459e090f5b968247d71ae9d12354a9e41d849b19704826d3ed33da4ae5ca",
+      "git_blob_sha1": "df540ec11b6bfcaedbca842b63e111177155c207"
+    },
+    {
+      "repository": "aoci-spec/aoci-code",
+      "commit": "3d8e4b0048b7ae93d671ffae39db73a44db434d3",
+      "path": "aoci.code.txt",
+      "url": "https://github.com/aoci-spec/aoci-code/blob/3d8e4b0048b7ae93d671ffae39db73a44db434d3/aoci.code.txt",
+      "bytes": 238573,
+      "sha256": "e417a9223f67f2520b9fd2a1e295fd7f4a945bfef9bc1c67cdb37a0d25dd1155",
+      "git_blob_sha1": "ce7e1e466bde1de1df9c40e50d618c78ef0685e7"
+    },
+    {
+      "repository": "aoci-spec/aoci-code",
+      "commit": "3d8e4b0048b7ae93d671ffae39db73a44db434d3",
+      "path": "aoci.meta.txt",
+      "url": "https://github.com/aoci-spec/aoci-code/blob/3d8e4b0048b7ae93d671ffae39db73a44db434d3/aoci.meta.txt",
+      "bytes": 1137,
+      "sha256": "a7818102f6ae1ee75c78556aaf21e1b8bea48e3305d76c796dcfb467ded4b9c7",
+      "git_blob_sha1": "873513e9be06c00c8827b4706c3ab3726761f8d8"
+    },
+    {
+      "repository": "aoci-spec/aoci-code",
+      "commit": "3d8e4b0048b7ae93d671ffae39db73a44db434d3",
+      "path": "aoci.txt",
+      "url": "https://github.com/aoci-spec/aoci-code/blob/3d8e4b0048b7ae93d671ffae39db73a44db434d3/aoci.txt",
+      "bytes": 1047,
+      "sha256": "9296aec664feed3f179b85da2790e20fd4542de10d994418ff4901407900f190",
+      "git_blob_sha1": "8afd25416ff44001eafd36ac24f30ffbd5bd3d89"
+    },
+    {
+      "repository": "aoci-spec/aoci-code",
+      "commit": "3d8e4b0048b7ae93d671ffae39db73a44db434d3",
+      "path": "internal/index/parser.go",
+      "url": "https://github.com/aoci-spec/aoci-code/blob/3d8e4b0048b7ae93d671ffae39db73a44db434d3/internal/index/parser.go",
+      "bytes": 35076,
+      "sha256": "6dde28a3ffecf10333436c9c57aca0f5b45d9a77d33875a7202cfe39e97c757a",
+      "git_blob_sha1": "bdbd8054f8e273dea5f19b3adcf0ee3d1e66c182"
+    },
+    {
+      "repository": "aoci-spec/aoci-code",
+      "commit": "3d8e4b0048b7ae93d671ffae39db73a44db434d3",
+      "path": "internal/index/relations.go",
+      "url": "https://github.com/aoci-spec/aoci-code/blob/3d8e4b0048b7ae93d671ffae39db73a44db434d3/internal/index/relations.go",
+      "bytes": 3774,
+      "sha256": "ffcc63a488e37456f8a14a556118d8808e91e32bc2ad34ae1e1492aa156fea41",
+      "git_blob_sha1": "e62afcffe78b96baf2dacd91df62c31ba7a16f08"
+    },
+    {
+      "repository": "aoci-spec/aoci-code",
+      "commit": "3d8e4b0048b7ae93d671ffae39db73a44db434d3",
+      "path": "internal/index/types.go",
+      "url": "https://github.com/aoci-spec/aoci-code/blob/3d8e4b0048b7ae93d671ffae39db73a44db434d3/internal/index/types.go",
+      "bytes": 8773,
+      "sha256": "afa02165658506cb838a302e7d5b0cb62b95e3ddaa808b067191876169364312",
+      "git_blob_sha1": "1b80477f0783b4b2a49ddd845f640bf4c6f704d0"
+    },
+    {
+      "repository": "aoci-spec/aoci-code",
+      "commit": "3d8e4b0048b7ae93d671ffae39db73a44db434d3",
+      "path": "internal/index/validator_tagparse.go",
+      "url": "https://github.com/aoci-spec/aoci-code/blob/3d8e4b0048b7ae93d671ffae39db73a44db434d3/internal/index/validator_tagparse.go",
+      "bytes": 1254,
+      "sha256": "b39af5f2504299ec738498e0c6ec32b223e884a6dd3f54f2edaafabca04ae7c6",
+      "git_blob_sha1": "2d1f7247dd2bda311f8832378c7f74d49dc0334c"
+    },
+    {
+      "repository": "aoci-spec/aoci-code",
+      "commit": "3d8e4b0048b7ae93d671ffae39db73a44db434d3",
+      "path": "internal/machinecontract/numeric.go",
+      "url": "https://github.com/aoci-spec/aoci-code/blob/3d8e4b0048b7ae93d671ffae39db73a44db434d3/internal/machinecontract/numeric.go",
+      "bytes": 10458,
+      "sha256": "fd553149d52724cc4650b60b15268181a74954d722f557631dfdf2d6ca436916",
+      "git_blob_sha1": "fc88265d760c5cbee53ae904c14d12765785e171"
+    },
+    {
+      "repository": "aoci-spec/aoci-code",
+      "commit": "3d8e4b0048b7ae93d671ffae39db73a44db434d3",
+      "path": "spec/public/aoci-cognition-volumes-v1.txt",
+      "url": "https://github.com/aoci-spec/aoci-code/blob/3d8e4b0048b7ae93d671ffae39db73a44db434d3/spec/public/aoci-cognition-volumes-v1.txt",
+      "bytes": 58213,
+      "sha256": "b22d31465a1c35cf0b8965b8dc85e0c6dfee1506bb8c2d536631ad400933f2cf",
+      "git_blob_sha1": "d3f35435ea94229efd63a85eeab4e913553766d3"
+    },
+    {
+      "repository": "aoci-spec/aoci-code",
+      "commit": "3d8e4b0048b7ae93d671ffae39db73a44db434d3",
+      "path": "spec/public/aoci-host-cognition-messaging-v2.txt",
+      "url": "https://github.com/aoci-spec/aoci-code/blob/3d8e4b0048b7ae93d671ffae39db73a44db434d3/spec/public/aoci-host-cognition-messaging-v2.txt",
+      "bytes": 4337,
+      "sha256": "081408161f32e7005ce4134ab8be5f40891f2b97c1c9e865f2ac3e62f484c371",
+      "git_blob_sha1": "13a310d068da457a04e09374ee22d10cd48c0134"
+    },
+    {
+      "repository": "aoci-spec/aoci-code",
+      "commit": "3d8e4b0048b7ae93d671ffae39db73a44db434d3",
+      "path": "spec/public/aoci-index-format-v1.txt",
+      "url": "https://github.com/aoci-spec/aoci-code/blob/3d8e4b0048b7ae93d671ffae39db73a44db434d3/spec/public/aoci-index-format-v1.txt",
+      "bytes": 11546,
+      "sha256": "74611e7e4fef39c2fad7d67fc79d78516f83f7144ca7f311d1cac9524bad876b",
+      "git_blob_sha1": "9f4450400fa42f2656c136332c208583ef9ca4e1"
+    },
+    {
+      "repository": "aoci-spec/aoci-code",
+      "commit": "3d8e4b0048b7ae93d671ffae39db73a44db434d3",
+      "path": "spec/public/aoci-mcp-runtime-v1.txt",
+      "url": "https://github.com/aoci-spec/aoci-code/blob/3d8e4b0048b7ae93d671ffae39db73a44db434d3/spec/public/aoci-mcp-runtime-v1.txt",
+      "bytes": 6475,
+      "sha256": "513e356aa2959e1bec5ed80903f8fdea08a50ee637e53727103d5ff3aeaf7c83",
+      "git_blob_sha1": "2737d340f8c604a036b2d11f4985219c1943d67a"
+    },
+    {
+      "repository": "aoci-spec/aoci-code",
+      "commit": "3d8e4b0048b7ae93d671ffae39db73a44db434d3",
+      "path": "spec/public/aoci-object-fras-v2.txt",
+      "url": "https://github.com/aoci-spec/aoci-code/blob/3d8e4b0048b7ae93d671ffae39db73a44db434d3/spec/public/aoci-object-fras-v2.txt",
+      "bytes": 4785,
+      "sha256": "73a65b0c5eaa05e019f5d2d110bf739282a7a38e9520d249eda6457201a078ba",
+      "git_blob_sha1": "34d7451fce8bbc429026c43dd5387056bb21f1d9"
+    },
+    {
+      "repository": "aoci-spec/aoci-code",
+      "commit": "3d8e4b0048b7ae93d671ffae39db73a44db434d3",
+      "path": "spec/public/aoci-overview-delivery-v1.txt",
+      "url": "https://github.com/aoci-spec/aoci-code/blob/3d8e4b0048b7ae93d671ffae39db73a44db434d3/spec/public/aoci-overview-delivery-v1.txt",
+      "bytes": 35725,
+      "sha256": "b34ba1b4c683df4bee0bc6bc1ad65bca52faea520f5bd6165824051119fc3fc5",
+      "git_blob_sha1": "ad297a49f0eb5859d0fe3bf1c4de98f0d7d555c0"
+    },
+    {
+      "repository": "aoci-spec/aoci-code",
+      "commit": "3d8e4b0048b7ae93d671ffae39db73a44db434d3",
+      "path": "testdata/volumes/database-quality/aoci.database.txt",
+      "url": "https://github.com/aoci-spec/aoci-code/blob/3d8e4b0048b7ae93d671ffae39db73a44db434d3/testdata/volumes/database-quality/aoci.database.txt",
+      "bytes": 1904,
+      "sha256": "66685b659c8406ea65fa923f2861603366e860f652730f47e1aa46d571b4d741",
+      "git_blob_sha1": "c86c71bf38c3939b05a951427f5cf12e78f0682c"
+    },
+    {
+      "repository": "aoci-spec/aoci-code",
+      "commit": "3d8e4b0048b7ae93d671ffae39db73a44db434d3",
+      "path": "testdata/volumes/database-quality/aoci.meta.txt",
+      "url": "https://github.com/aoci-spec/aoci-code/blob/3d8e4b0048b7ae93d671ffae39db73a44db434d3/testdata/volumes/database-quality/aoci.meta.txt",
+      "bytes": 581,
+      "sha256": "9e5205ddff723aad42e18555520e1b9bf33ea3cad0eabb1227f7c8d0f9505a74",
+      "git_blob_sha1": "92b7ba3c0c221221fea6cf426c312f4d51226c31"
+    },
+    {
+      "repository": "aoci-spec/aoci-code",
+      "commit": "3d8e4b0048b7ae93d671ffae39db73a44db434d3",
+      "path": "testdata/volumes/database-quality/aoci.txt",
+      "url": "https://github.com/aoci-spec/aoci-code/blob/3d8e4b0048b7ae93d671ffae39db73a44db434d3/testdata/volumes/database-quality/aoci.txt",
+      "bytes": 370,
+      "sha256": "bac77b36107866fca6501d2ba6a2d5177b4e41468ec4ecf0a7feb4203caeec87",
+      "git_blob_sha1": "04d7aa8c2101cec83ff80fcbeb53a3402e0b69df"
+    }
+  ]
+}

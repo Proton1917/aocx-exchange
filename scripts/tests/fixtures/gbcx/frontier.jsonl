@@ -1,0 +1,1 @@
+{"id":"Q1","title":"Uniform premise","target_statement":"Establish H for all admissible N.","inputs":"C1","available":"Conditional implication","missing":"Uniform H","next_discriminating_test":"Test the universal quantifier.","dependencies":["C1"],"priority":"high","status":"open"}

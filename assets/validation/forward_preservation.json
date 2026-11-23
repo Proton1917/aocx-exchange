@@ -1,0 +1,89 @@
+{
+  "status": "passed",
+  "checks": [
+    {
+      "name": "full_records_equal_input_json_values",
+      "passed": true
+    },
+    {
+      "name": "full_relations_equal_input_json_values",
+      "passed": true
+    },
+    {
+      "name": "full_has_no_omissions",
+      "passed": true
+    },
+    {
+      "name": "compact_prerequisite_closure_is_C_and_P",
+      "passed": true
+    },
+    {
+      "name": "compact_selection_is_pinned_C",
+      "passed": true
+    },
+    {
+      "name": "compact_declares_omissions",
+      "passed": true
+    },
+    {
+      "name": "compact_preserves_P_state",
+      "passed": true
+    },
+    {
+      "name": "compact_preserves_C_conditions",
+      "passed": true
+    },
+    {
+      "name": "compact_preserves_C_state_scope_and_anchors",
+      "passed": true
+    },
+    {
+      "name": "compact_preserves_assumption_relation",
+      "passed": true
+    },
+    {
+      "name": "experiment_work_and_knowledge_states",
+      "passed": true
+    },
+    {
+      "name": "experiment_input_and_reported_values_are_exact",
+      "passed": true
+    },
+    {
+      "name": "all_source_texts_are_exact",
+      "passed": true
+    },
+    {
+      "name": "free_idea_keeps_open_formulation",
+      "passed": true
+    },
+    {
+      "name": "document_task_remains_pending",
+      "passed": true
+    },
+    {
+      "name": "compact_source_records_digest_matches",
+      "passed": true
+    },
+    {
+      "name": "compact_source_relations_digest_matches",
+      "passed": true
+    },
+    {
+      "name": "full_source_records_digest_matches",
+      "passed": true
+    },
+    {
+      "name": "full_source_relations_digest_matches",
+      "passed": true
+    }
+  ],
+  "counts": {
+    "checks": 19,
+    "passed": 19
+  },
+  "scope": "结构、条件闭包、原文、状态、来源摘要及全量 JSON 值往返",
+  "domain_recalculation": "not_run",
+  "reader_task_evaluation": "not_run",
+  "babeltele_check_view": "not_applicable_to_deterministic_table_jsonl_views"
+}

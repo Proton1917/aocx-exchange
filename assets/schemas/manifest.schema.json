@@ -1,0 +1,154 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:aocx:schema:manifest:1.0",
+  "title": "AOCX/1 bundle manifest",
+  "type": "object",
+  "properties": {
+    "format": {
+      "const": "AOCX"
+    },
+    "version": {
+      "const": "1.0"
+    },
+    "namespace": {
+      "type": "string",
+      "minLength": 1
+    },
+    "records": {
+      "$ref": "#/$defs/path"
+    },
+    "relations": {
+      "$ref": "#/$defs/path"
+    },
+    "heads": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "profiles": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "required_profiles": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "assets": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/asset"
+      }
+    },
+    "origins": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/origin"
+      }
+    },
+    "external_resources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": true,
+        "properties": {
+          "uri": {
+            "type": "string"
+          },
+          "availability": {
+            "type": "string"
+          },
+          "role": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "extensions": {}
+  },
+  "required": [
+    "format",
+    "version",
+    "namespace",
+    "records",
+    "relations",
+    "heads",
+    "profiles",
+    "required_profiles",
+    "assets",
+    "origins"
+  ],
+  "additionalProperties": true,
+  "$defs": {
+    "path": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^[^/\\\\:\\u0000-\\u001f]+(?:/[^/\\\\:\\u0000-\\u001f]+)*$",
+      "not": {
+        "pattern": "(?:^|/)\\.{1,2}(?:/|$)"
+      }
+    },
+    "asset": {
+      "type": "object",
+      "required": [
+        "path",
+        "sha256",
+        "bytes",
+        "role"
+      ],
+      "properties": {
+        "path": {
+          "$ref": "#/$defs/path"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "role": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": true
+    },
+    "origin": {
+      "type": "object",
+      "required": [
+        "id",
+        "format",
+        "asset",
+        "root"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "format": {
+          "type": "string",
+          "minLength": 1
+        },
+        "asset": {
+          "$ref": "#/$defs/path"
+        },
+        "root": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": true
+    }
+  }
+}

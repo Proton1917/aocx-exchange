@@ -1,0 +1,48 @@
+{
+  "review_date": "2026-11-23",
+  "sources": [
+    {
+      "id": "CORE-MCP",
+      "url": "https://modelcontextprotocol.io/specification/2025-11-25/server/tools",
+      "kind": "official-standard",
+      "use": "existing transport and structured result binding"
+    },
+    {
+      "id": "CORE-JSONSCHEMA",
+      "url": "https://json-schema.org/draft/2020-12/json-schema-core",
+      "kind": "official-standard",
+      "use": "optional extensible structural schemas"
+    },
+    {
+      "id": "CORE-PROV",
+      "url": "https://www.w3.org/TR/prov-o/",
+      "kind": "official-standard",
+      "use": "provenance distinctions; no full export implemented"
+    },
+    {
+      "id": "CORE-JSONLD",
+      "url": "https://www.w3.org/TR/json-ld11/",
+      "kind": "official-standard",
+      "use": "qualified identifiers and extensible vocabulary"
+    },
+    {
+      "id": "CORE-ROCRATE",
+      "url": "https://arxiv.org/abs/2108.06503",
+      "kind": "primary-paper",
+      "venue": "Data Science 2022",
+      "use": "portable artifact+metadata packaging"
+    },
+    {
+      "id": "CORE-IB",
+      "url": "https://arxiv.org/abs/physics/0004057",
+      "kind": "primary-paper",
+      "use": "task-relative information preservation as design intuition"
+    },
+    {
+      "id": "CORE-SEMANTIC",
+      "url": "https://arxiv.org/abs/2604.02369v3",
+      "kind": "primary-paper",
+      "use": "transport/syntax/semantics separation"
+    }
+  ]
+}

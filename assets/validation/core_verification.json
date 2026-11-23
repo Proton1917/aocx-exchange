@@ -1,0 +1,69 @@
+{
+  "scope": "Independent deterministic file-exchange contract tests; no model compression benchmark",
+  "command": "python3 -m unittest discover -s scripts/tests -v",
+  "working_directory": "/home/agent/.codex/skills/remote-skills/aocx-exchange",
+  "status": "passed",
+  "tests_run": 25,
+  "failures": 0,
+  "errors": 0,
+  "observed_unittest_seconds": 0.436,
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "cases": [
+    "test_01_free_text_and_novel_kind_are_valid",
+    "test_02_unknown_fields_survive_full_capsule",
+    "test_03_domain_states_are_open",
+    "test_04_completion_does_not_change_open_knowledge",
+    "test_05_duplicate_json_members_rejected",
+    "test_06_non_json_numeric_constants_rejected",
+    "test_07_conflicting_duplicate_record_revision_rejected",
+    "test_08_dangling_relation_rejected",
+    "test_09_citation_cycles_remain_valid",
+    "test_10_capsule_keeps_transitive_assumptions",
+    "test_11_full_capsule_preserves_all_relations",
+    "test_12_asset_tampering_is_detected",
+    "test_13_parent_traversal_asset_is_rejected",
+    "test_14_required_unknown_profile_is_explicit",
+    "test_15_legacy_restore_is_byte_identical",
+    "test_16_unsafe_archive_member_rejected",
+    "test_17_disjoint_branch_edits_are_clean",
+    "test_18_divergent_heads_require_explicit_resolution",
+    "test_19_reused_revision_with_changed_content_conflicts",
+    "test_20_view_structure_does_not_certify_semantics",
+    "test_21_view_cannot_drop_protected_condition",
+    "test_22_view_is_bound_to_relation_snapshot",
+    "test_23_view_cannot_omit_assumption_record",
+    "test_24_lossy_view_requires_both_peers_to_accept",
+    "test_25_unknown_codec_is_not_assumed_lossless"
+  ],
+  "file_sha256": {
+    "scripts/aocx.py": "69a0b6cbd5bfe2647995df8a7978b188c15002832e1b9fe1fa02a161ba744b94",
+    "scripts/tests/test_core.py": "9a2d1b1ecfe16bf21f0b113fffb52ff339fe8a637ed836b1dabb975b62c976e5",
+    "scripts/adapters/__init__.py": "2d4379aaf4a651d5fa19f35a894e3f4bcaf0291f318b55eba314721c3d037e5d",
+    "scripts/adapters/aoci.py": "3e95445a0fcaba072203430228339fe9eb8be15a13f0178ce5bc2430475dcba0",
+    "scripts/adapters/gbcx.py": "3fdd460bf25519236afff2ccce63aaa2bfa30f087ef145bcf64095430e40e755"
+  },
+  "defects_found_and_regressed": [
+    {
+      "id": "REVIEW-01",
+      "finding": "Language view originally bound records only; modified relations remained accepted.",
+      "resolution": "Views now bind source_relations_sha256 and namespace; capsule headers carry them too.",
+      "test": "test_22_view_is_bound_to_relation_snapshot"
+    },
+    {
+      "id": "REVIEW-02",
+      "finding": "Unrecognized negotiated codecs were implicitly classified lossless.",
+      "resolution": "Built-in codecs have known modes; external codecs require matching explicit peer codec_modes, semantic modes require bilateral permission, and external execution remains implementation_required.",
+      "test": "test_25_unknown_codec_is_not_assumed_lossless"
+    }
+  ],
+  "limits": [
+    "Status checks validate declared structure and scope, not the truth of claims.",
+    "Semantic-language acceptance requires separately scoped reader evaluations."
+  ],
+  "additional_acceptance_coverage": [
+    "Cross-ID supersedes rejected; ordinary citation cycles accepted",
+    "Merged union supersedes cycle detected",
+    "Required namespace/digests/selection/omission metadata in capsule",
+    "Agreed external lossless and semantic codec modes; mismatched modes rejected"
+  ]
+}

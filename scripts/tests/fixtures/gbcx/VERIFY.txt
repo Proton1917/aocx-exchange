@@ -1,0 +1,35 @@
+GBCX/1 adapter acceptance vectors
+
+The files in this directory are independently authored fixtures. They contain
+three claims, one method, one frontier task, one source, one term, and one
+declaration locator: eight projected records.
+
+Required checks:
+1. C1 remains derived with both condition strings and a pinned condition
+   reference to C2, retaining its conditional native status; a completed
+   import never verifies H.
+2. C2 remains reported, not checked. C3 remains observed within its sample.
+3. The original nested future_vendor_field survives in body without changes.
+4. C1 -> C2 is depends_on. dependencies.json's C2 -> C1 prerequisite row must
+   normalize to the same edge, not create a reversed dependency.
+5. The dependency retains condition_bearing=true.
+6. M1 -> C1 is relates_to with body.native_field=claim_ids. Native associated
+   claims do not establish production. tried_failed and its exact failure_scope
+   remain in body.
+7. Q1 is proposed/open, with Q1 -> C1 depends_on.
+8. Every projected edge endpoint resolves to a record revision.
+9. Colliding IDs across tables receive deterministic scoped IDs; a duplicate ID
+   inside one table is rejected.
+10. An unresolved reference stays in the legacy body and yields a warning,
+    without producing a dangling normalized edge.
+11. Unknown claim states map to unchecked with a warning. Unknown native
+    fields and the original status remain in body.
+12. Malformed JSON, duplicate members, NaN and non-string assumptions are rejected.
+13. A conditional record with no local assumptions and no condition-bearing
+    references receives an explicit unresolved condition and a warning.
+14. Method usage states are exposed as state.method_use. Compact handoff retains
+    exact method result/next_test/failure_scope, symbol identifiers, source URL
+    and revision locators, and frontier missing inputs/next steps in anchors.
+
+Original GBCX proof/check/index bytes are retained by the enclosing core origin
+mechanism. This adapter's projection makes no source authenticity assertion.

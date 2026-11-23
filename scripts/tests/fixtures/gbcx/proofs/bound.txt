@@ -1,0 +1,1 @@
+Synthetic fixture: assume H. Apply lemma L under its original conditions to infer R(N)>0. The premise H remains required.

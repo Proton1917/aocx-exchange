@@ -1,0 +1,2 @@
+{"id":"software/edge1","from":{"id":"software/task","rev":"draft.1"},"to":{"id":"software/module","rev":"draft.1"},"kind":"depends_on"}
+{"id":"software/edge2","from":{"id":"software/task","rev":"draft.1"},"to":{"id":"software/check","rev":"draft.1"},"kind":"plans_check"}

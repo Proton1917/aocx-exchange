@@ -1,0 +1,72 @@
+#AOCI-CODE-VOLUME: 1
+
+===/<repository>/===
+.gitattributes[FV6T]: F:统一 Git 检出的文本行尾 | R:code:AGENTS.md | A:文本文件使用 LF | S:AOCI 基线按原始字节比对，平台默认换行转换会造成漂移
+.gitignore[FV3T]: F:排除 Python 缓存并保留项目测试记录 | R:- | A:保留 assets/validation/implementation_tests.log | S:-
+AGENTS.md[SW7T]: F:规定本仓库格式变更、契约验证及 AOCI 维护方式 | R:code:references/specification.md,code:references/validation.md | A:项目索引加载和维护入口 | S:原生 AOCI 流程负责本仓库索引写入，AOCX 投影用于交接
+README.md[SU6T]: F:介绍 AOCX、CLI 用法及本仓库 AOCI 索引 | R:code:scripts/aocx.py,code:references/mcp-binding.md | A:创建、导入、检查和恢复档案的示例命令 | S:-
+SKILL.md[SW6T]: F:指导智能体选择上下文交接来源、保真程度与验证方法 | R:code:scripts/aocx.py,code:references/validation.md | A:aocx-exchange 工作流 | S:模型任务效果按指定读者评估，原生 AOCI 收据沿原流程保存
+
+===/<repository>/agents/===
+openai.yaml[FE4T]: F:声明 AOCX 技能在宿主中的展示与调用方式 | R:code:SKILL.md | A:interface 与 policy | S:-
+
+===/<repository>/assets/examples/===
+build_examples.py[XQ5S]: F:生成软件、数学、文档示例及手写语言视图 | R:code:scripts/aocx.py,code:assets/examples/math_view.babeltele.json | A:从仓库根定位核心模块并使用固定的 draft.1 修订 | S:已有示例的记录和关系按 JSON 值比对，发现差异即报错
+math_view.babeltele.json[DA5T]: F:展示带来源绑定和保护字段的手写语言视图 | R:code:assets/examples/math/aocx.json,code:assets/schemas/babeltele-view.schema.json | A:选取 math/idea@draft.1，绑定记录和关系文件 | S:评价状态为 unassessed
+validation.json[TQ4T]: F:保存示例的 JSON Schema 与 AOCX 核心检查结果 | R:code:assets/examples/build_examples.py,code:assets/examples/math_view.babeltele.json | A:包含三份档案、文档单位约束与语言视图绑定检查 | S:-
+
+===/<repository>/assets/examples/document/===
+aocx.json[FD4T]: F:登记文档示例档案的当前修订与资源 | R:code:assets/examples/document/records.jsonl,code:assets/examples/document/relations.jsonl | A:namespace=example:document，document/1 为可选 profile | S:-
+records.jsonl[DB4T]: F:展示文档小节、待测数据与外部资源定位 | R:code:assets/profiles/document.profile.json | A:浓度读数保留 null、mg/L 与区间端点 | S:-
+relations.jsonl[DD4T]: F:将小节、测量记录和外部来源连接起来 | R:code:assets/examples/document/records.jsonl | A:describes 和 cites 边指向固定修订 | S:-
+
+===/<repository>/assets/examples/math/===
+aocx.json[FD4T]: F:登记数学示例档案及其当前修订和资源 | R:code:assets/examples/math/records.jsonl,code:assets/examples/math/relations.jsonl | A:namespace=example:math，必需 profile 为 core/1 | S:-
+records.jsonl[DB5T]: F:展示严格不等式的前提、推导及探索记录 | R:code:assets/examples/math/relations.jsonl,code:assets/examples/math_view.babeltele.json | A:结论携带指向前提固定修订的条件 | S:探索记录的知识状态为 speculative
+relations.jsonl[DD4T]: F:用假设边连接结论与前提 | R:code:assets/examples/math/records.jsonl | A:assumes 从 math/conclusion 指向 math/premise | S:-
+
+===/<repository>/assets/examples/software/===
+aocx.json[FD4T]: F:登记软件示例档案及其当前修订和资源 | R:code:assets/examples/software/records.jsonl,code:assets/examples/software/relations.jsonl | A:namespace=example:software，必需 profile 为 core/1 | S:-
+records.jsonl[DB5T]: F:展示十进制解析模块、输入要求、任务和拟执行检查 | R:code:assets/examples/software/relations.jsonl | A:输入要求固定为一个或多个 ASCII 数字 | S:检查记录的执行状态为 planned，结果为 null
+relations.jsonl[DD4T]: F:连接解析器任务、接口模块和拟执行检查 | R:code:assets/examples/software/records.jsonl | A:depends_on 与开放关系种类 plans_check | S:-
+
+===/<repository>/assets/profiles/===
+document.profile.json[FE5T]: F:声明可选文档与测量记录规则 | R:code:assets/schemas/document-profile.schema.json,code:assets/examples/document/records.jsonl | A:document/1 为可选；测量记录声明单位，数值支持 null | S:锚点的解释由读者按其 scheme 处理
+
+===/<repository>/assets/schemas/===
+babeltele-view.schema.json[FB6S]: F:定义任务条件语言视图的 JSON Schema | R:code:assets/schemas/build_schemas.py,code:references/profiles.md | A:来源绑定、生产者、读者、条目与评估状态 | S:评估声明为 passed 时要求报告相对路径
+build_schemas.py[XQ5S]: F:根据共享定义重建五份本地 JSON Schema | R:code:assets/schemas/record.schema.json,code:assets/schemas/document-profile.schema.json | A:通过 JSON Schema 2020-12 描述档案、记录、关系、视图和文档扩展 | S:文档规则在通用记录定义的副本上增加测量条件
+document-profile.schema.json[FE5S]: F:为 document/1 测量记录附加字段形状约束 | R:code:assets/profiles/document.profile.json,code:assets/schemas/record.schema.json | A:lab.measurement 的 body.unit 为非空文本，value 支持数值和 null | S:-
+manifest.schema.json[FB6S]: F:定义 AOCX 档案入口和资源声明的 JSON Schema | R:code:assets/schemas/build_schemas.py,code:scripts/aocx.py | A:必需字段含命名空间、档案相对路径、当前修订、资源与来源 | S:资产路径须为相对路径，原件位置以来源的 asset 与 root 声明
+record.schema.json[FB6T]: F:定义 AOCX 开放词汇记录的 JSON Schema | R:code:assets/schemas/build_schemas.py,code:references/specification.md | A:最小字段为 id、rev、kind、text；condition.ref 固定 id 和 rev | S:额外字段保持开放，body 和 extensions 接收任意 JSON 值
+relation.schema.json[FB6T]: F:定义 AOCX 有向关系的 JSON Schema | R:code:assets/schemas/build_schemas.py,code:references/specification.md | A:关系种类开放，from 和 to 指定 id 与 rev | S:图内引用解析由核心程序完成
+
+===/<repository>/assets/sources/===
+aoci_sources.json[SE4S]: F:登记 AOCI 兼容调查的上游版本与样本来源 | R:code:references/profiles.md,code:assets/validation/aoci_projection.json | A:文件记录绑定固定上游提交、URL 和摘要 | S:-
+core_sources.json[SG4T]: F:登记 MCP、JSON Schema、来源模型与档案设计的参考材料 | R:code:references/research.md,code:references/specification.md | A:记录材料版本、链接和相关范围 | S:-
+language_sources.json[SA4S]: F:登记语言视图、提示压缩和长期上下文研究的证据 | R:code:references/research.md,code:references/validation.md | A:来源与论文实验记录分列 | S:-
+
+===/<repository>/assets/validation/===
+aoci_projection.json[TE5T]: F:记录 AOCI 投影适配边界与固定上游样本结果 | R:code:scripts/adapters/aoci.py,code:assets/sources/aoci_sources.json | A:12 个用例，上游样本生成 497 条记录与 1013 条关系 | S:5 条原生关联在该样本中缺少目标
+aoci_protected_handoff.json[TE5T]: F:记录固定 AOCI 样本的原件恢复和保护字段交接结果 | R:code:scripts/adapters/aoci.py,code:assets/validation/verify_legacy_roundtrips.py | A:全量值往返、原件恢复及 494 个实体的原生契约保留结果 | S:保护范围覆盖标签、R/A/S 及字典绑定
+core_verification.json[TQ4T]: F:记录初始核心文件交换契约的测试结果 | R:code:scripts/aocx.py,code:references/validation.md | A:历史记录含 25 项用例、环境和修复覆盖 | S:-
+delivery.json[OV4M]: F:汇总初始参考实现的交付范围与验证证据 | R:code:assets/validation/aoci_protected_handoff.json,code:assets/validation/gbcx_roundtrip.json | A:交付范围含核心测试、旧格式导入恢复和文件清单 | S:平台管理的技能界面元数据位于文件摘要范围之外
+forward_preservation.json[TQ4T]: F:记录确定性交接的条件闭包和内容保留检查 | R:code:assets/validation/forward_use.json,code:references/validation.md | A:覆盖原文、状态、来源、固定引用及全量 JSON 值往返 | S:领域复算和读者任务评估状态分别登记
+forward_use.json[TQ4S]: F:汇总交接工作流的结构检查、紧凑视图和兼容性证据 | R:code:assets/validation/forward_preservation.json,code:references/validation.md | A:全量与紧凑上下文的指标、范围及来源保留情况 | S:-
+gbcx_roundtrip.json[TE5S]: F:记录真实 GBCX 档案与 AOCI 样本的导入和原件恢复 | R:code:assets/validation/verify_legacy_roundtrips.py,code:scripts/adapters/gbcx.py | A:GBCX 全量投影含 422 条记录与 320 条关系，并记录 R4R009 的条件闭包 | S:各原文件的恢复范围随输入清单登记
+verify_legacy_roundtrips.py[TE6S]: F:用显式指定的旧格式资料验证恢复、完整投影和条件闭包 | R:code:scripts/aocx.py,code:assets/validation/gbcx_roundtrip.json | A:要求 --gbcx 和 --work，可选 --aoci 与 --report | S:计数、固定修订和源引用断言绑定已核对样本，更换输入时按其真实范围重定验收标准
+
+===/<repository>/references/===
+mcp-binding.md[SE7T]: F:说明 AOCI MCP 与 AOCX 宿主适配的职责和数据流 | R:code:scripts/adapters/aoci.py,code:references/profiles.md | A:原生交付、响应保存、投影与回取流程 | S:完整交付沿原生游标和确认合同处理，AOCX 投影只声明自己的转换与检查状态
+profiles.md[SE7T]: F:规定 AOCI、GBCX 和语言视图的映射与评估边界 | R:code:scripts/adapters/aoci.py,code:scripts/adapters/gbcx.py,code:references/specification.md | A:原字节恢复、原字段保留、语义投影及修改后原生导出的兼容范围 | S:AOCI R 保留为关联；语言视图同时绑定记录摘要、关系摘要和命名空间
+research.md[SA4T]: F:汇集上下文交换、提示压缩和读者评估研究 | R:code:assets/sources/core_sources.json,code:assets/sources/language_sources.json | A:标明论文结果、参考实现与设计采用范围 | S:-
+specification.md[SB8S]: F:定义 AOCX 记录、关系、修订、档案、紧凑编码与协商契约 | R:code:scripts/aocx.py,code:assets/schemas/build_schemas.py,code:references/profiles.md | A:AOCX 1.0 的 JSONL、档案清单、选择闭包和 profile 扩展 | S:记录身份固定命名空间、对象和修订；普通关系允许环，supersedes 限同一对象且要求无环；存储摘要针对原始字节
+validation.md[SQ6T]: F:定义交换契约检查与读者任务评价方法 | R:code:scripts/aocx.py,code:references/profiles.md | A:结构、领域、语言和端到端成本评估分别记录范围 | S:语义视图评估绑定读者模型、分词器、源版本和实际任务
+
+===/<repository>/scripts/adapters/===
+__init__.py[IE2T]: F:声明旧格式投影模块所在的软件包 | R:- | A:- | S:-
+aoci.py[IE8M]: F:读取 AOCI Volumes v1 或旧式索引并投影为交换记录和关系 | R:code:scripts/aocx.py,code:references/profiles.md,code:assets/validation/aoci_protected_handoff.json | A:collect_paths(root) 定位声明资产；project(files) 返回记录、关系、警告与 profile | S:原生 R 生成 relates_to；未解析的目标保留原串并给出警告；保护锚点携带标签、R/A/S 及字典绑定
+gbcx.py[IE8M]: F:将 GBCX 声明、方法、任务、来源、符号和工具转换为 AOCX 对象 | R:code:scripts/aocx.py,code:references/profiles.md,code:assets/validation/verify_legacy_roundtrips.py | A:project(files) 解析六类 JSONL 与附属关系文件，保留原字段和固定引用 | S:旧依赖按使用者指向前提的方向输出；条件性结论缺少假设时保留显式条件；方法结果和待补证据置于保护锚点
+
+===/<repository>/scripts/===
+aocx.py[EB9L]: F:实现 AOCX 1.0 档案、转换、紧凑视图、兼容协商和冲突检查 | R:code:references/specification.md,code:scripts/adapters/aoci.py,code:scripts/adapters/gbcx.py,code:references/validation.md | A:CLI 提供 create、validate、import-aoci、import-gbcx、restore、capsule、check-view、negotiate 和 merge-check | S:选择闭包跟随条件引用、depends_on、assumes 和 cites；全量视图保留所选 JSON 值；语言视图检查同时绑定记录、关系和命名空间；三方合并只报告候选与冲突

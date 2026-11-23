@@ -1,0 +1,16 @@
+#AOCI-META-VOLUME: 1
+#Object-Protocol: repository-cognition-object/v2
+#FRAS-Discipline: 2
+#FRAS-v2-Limits-Authority: machine-contract
+#S-Admission: non-inferable-and-error-preventing
+#S quota: C9-8≤600 C7-4≤200 C3-1≤50
+#[Tag dictionary: code]
+#A Layer: C-Code
+#B Module: G-General
+#C Importance: 9-core 8-frequent 7-business 6-common 5-routine 4-helper 3-support 2-auxiliary 1-edge
+#E Scale: L-large M-medium S-small T-tiny
+#[Tag dictionary: database]
+#A Layer: D-Database
+#B Module: B-Business
+#C Importance: 9-core 8-frequent 7-business 6-common 5-routine 4-helper 3-support 2-auxiliary 1-edge
+#E Scale: L-large M-medium S-small T-tiny

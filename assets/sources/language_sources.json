@@ -1,0 +1,133 @@
+{
+  "review_date": "2026-11-23",
+  "sources": [
+    {
+      "id": "LANG-BT-PAPER",
+      "title": "Large Language Models Do Not Always Need Readable Language",
+      "authors": [
+        "Jiayi Zhu",
+        "Haoxuan Peng",
+        "Junxi Wang",
+        "Liang Ke",
+        "Chen Zhang",
+        "Linfeng Zhang"
+      ],
+      "version": "arXiv:2606.19857v1",
+      "url": "https://arxiv.org/html/2606.19857v1",
+      "kind": "primary-paper",
+      "reviewed_sections": [
+        "3",
+        "4.3",
+        "4.4",
+        "4.5",
+        "Limitations",
+        "B.1",
+        "B.5",
+        "C.1",
+        "C.2"
+      ],
+      "web_ref": "turn606958635view4",
+      "usage": "Optional model-facing semantic view; empirical task fidelity distinct from byte recovery."
+    },
+    {
+      "id": "LANG-LLMLINGUA2",
+      "title": "LLMLingua-2: Data Distillation for Efficient and Faithful Task-Agnostic Prompt Compression",
+      "version": "ACL Findings 2024",
+      "url": "https://aclanthology.org/2024.findings-acl.57.pdf",
+      "kind": "primary-paper",
+      "web_ref": "turn606958635view0",
+      "author_repository": "https://github.com/microsoft/LLMLingua",
+      "usage": "Replaceable task-agnostic extractive codec with explicit model and budget."
+    },
+    {
+      "id": "LANG-LONGLINGUA",
+      "title": "LongLLMLingua: Accelerating and Enhancing LLMs in Long Context Scenarios via Prompt Compression",
+      "version": "ACL 2024",
+      "url": "https://aclanthology.org/2024.acl-long.91.pdf",
+      "kind": "primary-paper",
+      "web_ref": "turn606958635view1",
+      "author_project": "https://llmlingua.com/longllmlingua.html",
+      "usage": "Query-aware selection requires explicit task/query scope and ordering metadata."
+    },
+    {
+      "id": "LANG-SUFFICIENT",
+      "title": "Sufficient Context: A New Lens on Retrieval Augmented Generation Systems",
+      "version": "ICLR 2025",
+      "url": "https://research.google/pubs/sufficient-context-a-new-lens-on-retrieval-augmented-generation-systems-2/",
+      "paper": "https://arxiv.org/abs/2411.06037",
+      "kind": "primary-author-publication",
+      "web_ref": "turn531045286search1",
+      "author_repository": "https://github.com/hljoren/sufficientcontext",
+      "usage": "Separate sufficiency of selected evidence from reader success; scope sufficiency to a question."
+    },
+    {
+      "id": "LANG-BT-COMMUNITY-SPEC",
+      "title": "BabelTele-Whitepaper, Canonical Instruction Set",
+      "url": "https://github.com/Minglink/BabelTele-Whitepaper/blob/main/en/07-canonical-instruction-set.md",
+      "kind": "community-specification",
+      "web_ref": "turn606958635search2",
+      "access_scope": "Search-indexed chapter extract; direct repository page fetch unavailable in this tool",
+      "usage": "Independent community profile; attribution kept separate from the research paper."
+    },
+    {
+      "id": "LANG-BT-COMMUNITY-RUST",
+      "title": "lukaszgryglicki/babeltele",
+      "url": "https://github.com/lukaszgryglicki/babeltele",
+      "kind": "community-implementation",
+      "web_ref": "turn606958635view3",
+      "usage": "Documentation-only inspection; deterministic filter differs from the paper's generative experiments."
+    },
+    {
+      "id": "LANG-POSITION",
+      "title": "Lost in the Middle: How Language Models Use Long Contexts",
+      "version": "TACL 2024",
+      "url": "https://aclanthology.org/2024.tacl-1.9/",
+      "kind": "primary-paper",
+      "web_ref": "turn603031209view0",
+      "author_repository": "https://github.com/nelson-liu/lost-in-the-middle",
+      "usage": "Entrypoint and presentation-order metadata; position-permuted reader evaluation."
+    },
+    {
+      "id": "LANG-LONGMEMEVAL",
+      "title": "LongMemEval: Benchmarking Chat Assistants on Long-Term Interactive Memory",
+      "version": "ICLR 2025",
+      "url": "https://arxiv.org/abs/2410.10813",
+      "kind": "primary-author-repository",
+      "web_ref": "turn603031209view1",
+      "author_repository": "https://github.com/xiaowu0162/LongMemEval",
+      "usage": "Revision/time-sensitive memory tests, supporting-session provenance and unknown-answer cases; pin cleaned dataset version."
+    },
+    {
+      "id": "LANG-RECOMP",
+      "title": "RECOMP: Improving Retrieval-Augmented LMs with Context Compression and Selective Augmentation",
+      "version": "ICLR 2024",
+      "url": "https://proceedings.iclr.cc/paper_files/paper/2024/hash/bda88ed2892f5e61c9a9bf215c566913-Abstract-Conference.html",
+      "kind": "primary-paper",
+      "web_ref": "turn603031209view2",
+      "author_repository": "https://github.com/carriex/recomp",
+      "usage": "Represent intentionally empty query-scoped derived selections separately from missing or failed transfers."
+    },
+    {
+      "id": "LANG-LLMLINGUA-REPO",
+      "title": "Microsoft LLMLingua",
+      "url": "https://github.com/microsoft/LLMLingua",
+      "kind": "primary-implementation",
+      "web_ref": "turn771196222view1",
+      "usage": "Native parameter capture for optional extractive/conditional compression; documentation inspection only."
+    },
+    {
+      "id": "LANG-TOON",
+      "title": "Token-Oriented Object Notation",
+      "url": "https://github.com/toon-format/toon",
+      "kind": "primary-format-implementation",
+      "web_ref": "turn771196222view0",
+      "specification": "https://github.com/toon-format/spec",
+      "usage": "Optional structural codec, validated JSON-value round trip, data-shape-dependent savings; not implemented or benchmarked in this review."
+    }
+  ],
+  "experiments": {
+    "paper_results": "Attributed to their original authors; not rerun.",
+    "new_model_compression_runs": 0,
+    "new_cross_model_benchmarks": 0
+  }
+}

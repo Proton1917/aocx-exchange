@@ -1,0 +1,1 @@
+{"id":"M1","title":"A restricted candidate method","state":"tried_failed","objects":"one chosen kernel","result":"An attempted bound fails on a stated example.","claim_ids":["C1"],"next_test":"Change the specified hypothesis.","failure_scope":"Only this kernel and bound."}

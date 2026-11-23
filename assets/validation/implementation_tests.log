@@ -1,0 +1,33 @@
+test_selected_handoff_retains_native_contract_and_dictionary (test_aoci_protected.ProtectedAOCITests.test_selected_handoff_retains_native_contract_and_dictionary) ... ok
+test_semantic_view_cannot_change_native_constraints (test_aoci_protected.ProtectedAOCITests.test_semantic_view_cannot_change_native_constraints) ... ok
+test_source_labels_do_not_repeat_native_code (test_aoci_protected.ProtectedAOCITests.test_source_labels_do_not_repeat_native_code) ... ok
+test_01_free_text_and_novel_kind_are_valid (test_core.CoreContractTests.test_01_free_text_and_novel_kind_are_valid) ... ok
+test_02_unknown_fields_survive_full_capsule (test_core.CoreContractTests.test_02_unknown_fields_survive_full_capsule) ... ok
+test_03_domain_states_are_open (test_core.CoreContractTests.test_03_domain_states_are_open) ... ok
+test_04_completion_does_not_change_open_knowledge (test_core.CoreContractTests.test_04_completion_does_not_change_open_knowledge) ... ok
+test_05_duplicate_json_members_rejected (test_core.CoreContractTests.test_05_duplicate_json_members_rejected) ... ok
+test_06_non_json_numeric_constants_rejected (test_core.CoreContractTests.test_06_non_json_numeric_constants_rejected) ... ok
+test_07_conflicting_duplicate_record_revision_rejected (test_core.CoreContractTests.test_07_conflicting_duplicate_record_revision_rejected) ... ok
+test_08_dangling_relation_rejected (test_core.CoreContractTests.test_08_dangling_relation_rejected) ... ok
+test_09_citation_cycles_remain_valid (test_core.CoreContractTests.test_09_citation_cycles_remain_valid) ... ok
+test_10_capsule_keeps_transitive_assumptions (test_core.CoreContractTests.test_10_capsule_keeps_transitive_assumptions) ... ok
+test_11_full_capsule_preserves_all_relations (test_core.CoreContractTests.test_11_full_capsule_preserves_all_relations) ... ok
+test_12_asset_tampering_is_detected (test_core.CoreContractTests.test_12_asset_tampering_is_detected) ... ok
+test_13_parent_traversal_asset_is_rejected (test_core.CoreContractTests.test_13_parent_traversal_asset_is_rejected) ... ok
+test_14_required_unknown_profile_is_explicit (test_core.CoreContractTests.test_14_required_unknown_profile_is_explicit) ... ok
+test_15_legacy_restore_is_byte_identical (test_core.CoreContractTests.test_15_legacy_restore_is_byte_identical) ... ok
+test_16_unsafe_archive_member_rejected (test_core.CoreContractTests.test_16_unsafe_archive_member_rejected) ... ok
+test_17_disjoint_branch_edits_are_clean (test_core.CoreContractTests.test_17_disjoint_branch_edits_are_clean) ... ok
+test_18_divergent_heads_require_explicit_resolution (test_core.CoreContractTests.test_18_divergent_heads_require_explicit_resolution) ... ok
+test_19_reused_revision_with_changed_content_conflicts (test_core.CoreContractTests.test_19_reused_revision_with_changed_content_conflicts) ... ok
+test_20_view_structure_does_not_certify_semantics (test_core.CoreContractTests.test_20_view_structure_does_not_certify_semantics) ... ok
+test_21_view_cannot_drop_protected_condition (test_core.CoreContractTests.test_21_view_cannot_drop_protected_condition) ... ok
+test_22_view_is_bound_to_relation_snapshot (test_core.CoreContractTests.test_22_view_is_bound_to_relation_snapshot) ... ok
+test_23_view_cannot_omit_assumption_record (test_core.CoreContractTests.test_23_view_cannot_omit_assumption_record) ... ok
+test_24_lossy_view_requires_both_peers_to_accept (test_core.CoreContractTests.test_24_lossy_view_requires_both_peers_to_accept) ... ok
+test_25_unknown_codec_is_not_assumed_lossless (test_core.CoreContractTests.test_25_unknown_codec_is_not_assumed_lossless) ... ok
+
+----------------------------------------------------------------------
+Ran 28 tests in 0.453s
+
+OK

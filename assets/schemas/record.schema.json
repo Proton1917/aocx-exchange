@@ -1,0 +1,99 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:aocx:schema:record:1.0",
+  "title": "AOCX/1 open-vocabulary record",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "rev": {
+      "type": "string",
+      "minLength": 1
+    },
+    "kind": {
+      "type": "string",
+      "minLength": 1
+    },
+    "text": {
+      "type": "string"
+    },
+    "body": {},
+    "state": {
+      "type": "object",
+      "properties": {
+        "work": {
+          "type": "string"
+        },
+        "knowledge": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": true
+    },
+    "conditions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "text"
+        ],
+        "properties": {
+          "text": {
+            "type": "string"
+          },
+          "ref": {
+            "$ref": "#/$defs/ref"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "scope": {
+      "type": "string"
+    },
+    "provenance": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": true
+      }
+    },
+    "anchors": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": true
+      }
+    },
+    "extensions": {}
+  },
+  "required": [
+    "id",
+    "rev",
+    "kind",
+    "text"
+  ],
+  "additionalProperties": true,
+  "$defs": {
+    "ref": {
+      "type": "object",
+      "required": [
+        "id",
+        "rev"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "rev": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": true
+    }
+  }
+}

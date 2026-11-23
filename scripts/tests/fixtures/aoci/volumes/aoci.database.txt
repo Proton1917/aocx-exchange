@@ -1,0 +1,3 @@
+#AOCI-DATABASE-VOLUME: 1
+===Demo namespace/database://demo/public/===
+jobs[DB9T]: F:Stores queued job records | R:code:services/queue.py | A:job_id | S:Retain receipts while retries can arrive

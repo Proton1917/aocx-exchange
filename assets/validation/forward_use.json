@@ -1,0 +1,140 @@
+{
+  "status": "passed",
+  "structural_validation": {
+    "status": "passed",
+    "errors": [],
+    "warnings": [],
+    "namespace": "forward-use",
+    "records_sha256": "8c7ce0aa7a48984e7622ac0e8f8b444afaeed064da862e1963df9b5d731ce14f",
+    "relations_sha256": "6386cdeb1aa5ac97d8187abba13deaa51f1019c0ac34cfe431c7c1ca260db78d",
+    "counts": {
+      "records": 5,
+      "relations": 3,
+      "assets": 2
+    },
+    "preserve_only": false,
+    "required_profiles_supported": true,
+    "scope": "Structure, pinned references and exact stored bytes; content truth and actions are external"
+  },
+  "implementation_tests": {
+    "status": "passed",
+    "tests": 28,
+    "seconds": "0.453",
+    "result": "OK",
+    "log": "checks/implementation_tests.log"
+  },
+  "source_preservation": {
+    "status": "passed",
+    "checks": 19,
+    "passed": 19,
+    "report": "checks/preservation.json"
+  },
+  "compact_C": {
+    "path": "views/C.aocx",
+    "bytes": 1528,
+    "header": {
+      "format": "AOCX",
+      "version": "1.0",
+      "encoding": "table-jsonl/1",
+      "projection": "handoff",
+      "source_records_sha256": "8c7ce0aa7a48984e7622ac0e8f8b444afaeed064da862e1963df9b5d731ce14f",
+      "source_relations_sha256": "6386cdeb1aa5ac97d8187abba13deaa51f1019c0ac34cfe431c7c1ca260db78d",
+      "namespace": "forward-use",
+      "columns": {
+        "record": [
+          "id",
+          "rev",
+          "kind",
+          "text",
+          "extra"
+        ],
+        "relation": [
+          "id",
+          "from",
+          "kind",
+          "to",
+          "extra"
+        ]
+      },
+      "counts": {
+        "records": 2,
+        "relations": 1
+      },
+      "omitted_fields": [
+        "body"
+      ],
+      "selection": {
+        "mode": "heads",
+        "refs": [
+          {
+            "id": "C",
+            "rev": "1"
+          }
+        ]
+      },
+      "omitted_records": 3,
+      "omitted_relations": 2
+    }
+  },
+  "full_context": {
+    "path": "views/all.full.aocx",
+    "bytes": 3300,
+    "header": {
+      "format": "AOCX",
+      "version": "1.0",
+      "encoding": "table-jsonl/1",
+      "projection": "full",
+      "source_records_sha256": "8c7ce0aa7a48984e7622ac0e8f8b444afaeed064da862e1963df9b5d731ce14f",
+      "source_relations_sha256": "6386cdeb1aa5ac97d8187abba13deaa51f1019c0ac34cfe431c7c1ca260db78d",
+      "namespace": "forward-use",
+      "columns": {
+        "record": [
+          "id",
+          "rev",
+          "kind",
+          "text",
+          "extra"
+        ],
+        "relation": [
+          "id",
+          "from",
+          "kind",
+          "to",
+          "extra"
+        ]
+      },
+      "counts": {
+        "records": 5,
+        "relations": 3
+      },
+      "omitted_fields": [],
+      "selection": {
+        "mode": "all"
+      },
+      "omitted_records": 0,
+      "omitted_relations": 0
+    }
+  },
+  "compatibility": {
+    "format": "AOCX/1.0",
+    "required_profiles": [
+      "core/1"
+    ],
+    "encoding": "table-jsonl/1",
+    "unsupported_required_profiles": [],
+    "unresolved_references": []
+  },
+  "reader_task_evaluation": {
+    "status": "not_run",
+    "scope": "确定性表格编码的 JSON 值往返已检查；接收 Agent 的文档任务执行效果留待后续工作。"
+  },
+  "domain_evaluation": {
+    "status": "not_run",
+    "scope": "按资料保存 P、C、E、I、D；实验结果和书面推导保留原资料的证据状态。"
+  },
+  "babeltele_check_view": {
+    "status": "not_applicable",
+    "reason": "本次生成 table-jsonl/1 确定性视图。"
+  },
+  "commands": "checks/commands.json"
+}

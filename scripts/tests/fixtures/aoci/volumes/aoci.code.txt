@@ -1,0 +1,11 @@
+#AOCI-CODE-VOLUME: 1
+
+===/<repository>/===
+model.py[CG7T]: F:Defines a queued job | R:- | A:Job | S:Job identifiers stay stable across retries
+#state.txt[CG3T]: F:Records the old fixture marker | R:- | A:- | S:-
+#state.txt[CG3T]: F:Records the active fixture marker | R:- | A:- | S:-
+# An ordinary comment remains a comment.
+
+===/<repository>/services/===
+queue.py[CG9S]: F:Processes queued jobs | R:code:model.py,database://demo/public/jobs | A:run | S:Commit the job and its receipt together
+[...id].jsx[CG5T]: F:Displays a requested job | R:code:services/queue.py | A:JobPage | S:Preserve the requested identifier on retries

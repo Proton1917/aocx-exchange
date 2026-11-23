@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:aocx:schema:relation:1.0",
+  "title": "AOCX/1 typed directed relation",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "kind": {
+      "type": "string",
+      "minLength": 1
+    },
+    "from": {
+      "$ref": "#/$defs/ref"
+    },
+    "to": {
+      "$ref": "#/$defs/ref"
+    },
+    "body": {},
+    "extensions": {}
+  },
+  "required": [
+    "id",
+    "from",
+    "to",
+    "kind"
+  ],
+  "additionalProperties": true,
+  "$defs": {
+    "ref": {
+      "type": "object",
+      "required": [
+        "id",
+        "rev"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "rev": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": true
+    }
+  }
+}

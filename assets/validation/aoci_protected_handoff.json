@@ -1,0 +1,19 @@
+{
+  "status": "passed",
+  "scope": "Real AOCI pinned-source import, full semantic-value roundtrip, protected handoff and original byte restore",
+  "upstream_commit": "3d8e4b0048b7ae93d671ffae39db73a44db434d3",
+  "records": 497,
+  "entities": 494,
+  "relations": 1013,
+  "unresolved_native_relations": 5,
+  "protected_entity_contracts": 494,
+  "full_capsule_equal": true,
+  "handoff_R_A_S_tag_dictionary_equal": true,
+  "native_asset_bytes_restored": {
+    "aoci.code.txt": "e417a9223f67f2520b9fd2a1e295fd7f4a945bfef9bc1c67cdb37a0d25dd1155",
+    "aoci.meta.txt": "a7818102f6ae1ee75c78556aaf21e1b8bea48e3305d76c796dcfb467ded4b9c7",
+    "aoci.txt": "9296aec664feed3f179b85da2790e20fd4542de10d994418ff4901407900f190"
+  },
+  "core_sha256": "69a0b6cbd5bfe2647995df8a7978b188c15002832e1b9fe1fa02a161ba744b94",
+  "adapter_sha256": "929cfe572b1c56a7751855012fad3a2c68304d3b8b5580a5fb1618428c433383"
+}

@@ -1,0 +1,37 @@
+{
+  "format": "AOCX",
+  "version": "1.0",
+  "namespace": "example:math",
+  "records": "records.jsonl",
+  "relations": "relations.jsonl",
+  "heads": {
+    "math/premise": "draft.1",
+    "math/conclusion": "draft.1",
+    "math/idea": "draft.1"
+  },
+  "profiles": [
+    "core/1"
+  ],
+  "required_profiles": [
+    "core/1"
+  ],
+  "assets": [
+    {
+      "path": "records.jsonl",
+      "sha256": "705548ed7cdecff2d12e6228f4d793f4d9eb32ee7a07311a8f7a28ede692cafd",
+      "bytes": 907,
+      "role": "records"
+    },
+    {
+      "path": "relations.jsonl",
+      "sha256": "5d4f319640ff66a404eb4e50e4438cfc973557985e4710be18a87ab31ed0bef5",
+      "bytes": 128,
+      "role": "relations"
+    }
+  ],
+  "origins": [],
+  "extensions": {
+    "example": true,
+    "asserted_execution": false
+  }
+}

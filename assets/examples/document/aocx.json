@@ -1,0 +1,38 @@
+{
+  "format": "AOCX",
+  "version": "1.0",
+  "namespace": "example:document",
+  "records": "records.jsonl",
+  "relations": "relations.jsonl",
+  "heads": {
+    "document/section": "draft.1",
+    "document/measurement": "draft.1",
+    "document/source": "draft.1"
+  },
+  "profiles": [
+    "core/1",
+    "document/1"
+  ],
+  "required_profiles": [
+    "core/1"
+  ],
+  "assets": [
+    {
+      "path": "records.jsonl",
+      "sha256": "584f4583be6d69325dfbe9d8ed28472446b773043d381e5d39ce113a726544b7",
+      "bytes": 936,
+      "role": "records"
+    },
+    {
+      "path": "relations.jsonl",
+      "sha256": "7ac223695c851d4805908e30624c558a6003856e12819f12c80442e63d6b48da",
+      "bytes": 281,
+      "role": "relations"
+    }
+  ],
+  "origins": [],
+  "extensions": {
+    "example": true,
+    "asserted_execution": false
+  }
+}

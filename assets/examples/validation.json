@@ -1,0 +1,88 @@
+{
+  "schema_files": 5,
+  "schema_dialect": "2020-12",
+  "examples": {
+    "software": {
+      "records": 4,
+      "relations": 2,
+      "json_schema": "passed",
+      "core": {
+        "status": "passed",
+        "errors": [],
+        "warnings": [],
+        "namespace": "example:software",
+        "records_sha256": "faa610a3c0692f0bfb8f6c9c6cc1ed86107582e640f6b23e8e5436bf87e87a89",
+        "relations_sha256": "722aeac7e8ca176632612e6a117730409a40f9221d84aa1f76e597a3e697536c",
+        "counts": {
+          "records": 4,
+          "relations": 2,
+          "assets": 2
+        },
+        "preserve_only": false,
+        "required_profiles_supported": true,
+        "scope": "Structure, pinned references and exact stored bytes; content truth and actions are external"
+      }
+    },
+    "math": {
+      "records": 3,
+      "relations": 1,
+      "json_schema": "passed",
+      "core": {
+        "status": "passed",
+        "errors": [],
+        "warnings": [],
+        "namespace": "example:math",
+        "records_sha256": "705548ed7cdecff2d12e6228f4d793f4d9eb32ee7a07311a8f7a28ede692cafd",
+        "relations_sha256": "5d4f319640ff66a404eb4e50e4438cfc973557985e4710be18a87ab31ed0bef5",
+        "counts": {
+          "records": 3,
+          "relations": 1,
+          "assets": 2
+        },
+        "preserve_only": false,
+        "required_profiles_supported": true,
+        "scope": "Structure, pinned references and exact stored bytes; content truth and actions are external"
+      }
+    },
+    "document": {
+      "records": 3,
+      "relations": 2,
+      "json_schema": "passed",
+      "core": {
+        "status": "passed",
+        "errors": [],
+        "warnings": [],
+        "namespace": "example:document",
+        "records_sha256": "584f4583be6d69325dfbe9d8ed28472446b773043d381e5d39ce113a726544b7",
+        "relations_sha256": "7ac223695c851d4805908e30624c558a6003856e12819f12c80442e63d6b48da",
+        "counts": {
+          "records": 3,
+          "relations": 2,
+          "assets": 2
+        },
+        "preserve_only": false,
+        "required_profiles_supported": true,
+        "scope": "Structure, pinned references and exact stored bytes; content truth and actions are external"
+      }
+    }
+  },
+  "unassessed_view": {
+    "status": "passed",
+    "structural": "passed",
+    "eligible": false,
+    "semantic_evaluation_verified": false,
+    "eligibility_basis": "Declared evaluation status and bound report; host evaluates the actual evidence",
+    "errors": [],
+    "warnings": [],
+    "entries": 1
+  },
+  "open_vocabulary_and_null": "passed",
+  "optional_unit_profile_rejects_missing_unit": "passed",
+  "core_sha256": "69a0b6cbd5bfe2647995df8a7978b188c15002832e1b9fe1fa02a161ba744b94",
+  "view_bindings": {
+    "namespace_required": true,
+    "relations_digest_required": true,
+    "changed_namespace_rejected": true,
+    "changed_relations_digest_rejected": true
+  }
+}

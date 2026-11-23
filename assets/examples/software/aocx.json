@@ -1,0 +1,38 @@
+{
+  "format": "AOCX",
+  "version": "1.0",
+  "namespace": "example:software",
+  "records": "records.jsonl",
+  "relations": "relations.jsonl",
+  "heads": {
+    "software/module": "draft.1",
+    "software/requirement": "draft.1",
+    "software/task": "draft.1",
+    "software/check": "draft.1"
+  },
+  "profiles": [
+    "core/1"
+  ],
+  "required_profiles": [
+    "core/1"
+  ],
+  "assets": [
+    {
+      "path": "records.jsonl",
+      "sha256": "faa610a3c0692f0bfb8f6c9c6cc1ed86107582e640f6b23e8e5436bf87e87a89",
+      "bytes": 1368,
+      "role": "records"
+    },
+    {
+      "path": "relations.jsonl",
+      "sha256": "722aeac7e8ca176632612e6a117730409a40f9221d84aa1f76e597a3e697536c",
+      "bytes": 272,
+      "role": "relations"
+    }
+  ],
+  "origins": [],
+  "extensions": {
+    "example": true,
+    "asserted_execution": false
+  }
+}

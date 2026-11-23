@@ -1,0 +1,2 @@
+{"id":"document/edge1","from":{"id":"document/section","rev":"draft.1"},"to":{"id":"document/measurement","rev":"draft.1"},"kind":"describes"}
+{"id":"document/edge2","from":{"id":"document/measurement","rev":"draft.1"},"to":{"id":"document/source","rev":"draft.1"},"kind":"cites"}

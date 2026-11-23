@@ -1,0 +1,182 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:aocx:schema:babeltele-view:1.0",
+  "title": "AOCX/1 task-conditioned experimental view",
+  "type": "object",
+  "properties": {
+    "format": {
+      "const": "AOCX-VIEW"
+    },
+    "version": {
+      "const": "1.0"
+    },
+    "codec": {
+      "const": "babeltele-view/1"
+    },
+    "source_records_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "namespace": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_relations_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "task": {
+      "type": "string"
+    },
+    "producer": {
+      "type": "object",
+      "required": [
+        "model",
+        "prompt_sha256"
+      ],
+      "properties": {
+        "model": {
+          "type": "string",
+          "minLength": 1
+        },
+        "prompt_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      },
+      "additionalProperties": true
+    },
+    "consumer": {
+      "type": "object",
+      "required": [
+        "model",
+        "tokenizer"
+      ],
+      "properties": {
+        "model": {
+          "type": "string",
+          "minLength": 1
+        },
+        "tokenizer": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": true
+    },
+    "entries": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "ref",
+          "text",
+          "protected"
+        ],
+        "properties": {
+          "ref": {
+            "$ref": "#/$defs/ref"
+          },
+          "text": {
+            "type": "string"
+          },
+          "protected": {}
+        },
+        "additionalProperties": true
+      }
+    },
+    "evaluation": {
+      "type": "object",
+      "required": [
+        "status"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "unassessed",
+            "passed"
+          ]
+        },
+        "report": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^[^/\\\\:\\u0000-\\u001f]+(?:/[^/\\\\:\\u0000-\\u001f]+)*$",
+              "not": {
+                "pattern": "(?:^|/)\\.{1,2}(?:/|$)"
+              }
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "passed"
+              }
+            },
+            "required": [
+              "status"
+            ]
+          },
+          "then": {
+            "required": [
+              "report"
+            ],
+            "properties": {
+              "report": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "^[^/\\\\:\\u0000-\\u001f]+(?:/[^/\\\\:\\u0000-\\u001f]+)*$",
+                "not": {
+                  "pattern": "(?:^|/)\\.{1,2}(?:/|$)"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "additionalProperties": true
+    }
+  },
+  "required": [
+    "format",
+    "version",
+    "codec",
+    "namespace",
+    "source_records_sha256",
+    "source_relations_sha256",
+    "task",
+    "producer",
+    "consumer",
+    "entries",
+    "evaluation"
+  ],
+  "additionalProperties": true,
+  "$defs": {
+    "ref": {
+      "type": "object",
+      "required": [
+        "id",
+        "rev"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "rev": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": true
+    }
+  }
+}

@@ -1,0 +1,13 @@
+interface:
+  display_name: AOCX Exchange
+  short_description: 通用 Agent 上下文交换，兼容 AOCI、GBCX 与 BabelTele，并执行结构和语义保留检查
+  default_prompt: 使用 $aocx-exchange 整理这项工作的上下文，生成可交接的 AOCX 数据并运行兼容与完整性检查。
+  icon_small: assets/icon.svg
+  icon_large: assets/icon.svg
+policy:
+  products:
+  - chatgpt
+  - codex
+  - api
+  - atlas
+  allow_implicit_invocation: true

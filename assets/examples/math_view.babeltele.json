@@ -1,0 +1,38 @@
+{
+  "format": "AOCX-VIEW",
+  "version": "1.0",
+  "codec": "babeltele-view/1",
+  "namespace": "example:math",
+  "source_records_sha256": "705548ed7cdecff2d12e6228f4d793f4d9eb32ee7a07311a8f7a28ede692cafd",
+  "source_relations_sha256": "5d4f319640ff66a404eb4e50e4438cfc973557985e4710be18a87ab31ed0bef5",
+  "task": "Keep the speculative direction available without promoting it to a result.",
+  "producer": {
+    "model": "none:manual-example",
+    "prompt_sha256": "f439435d2784c81a9db0c1b5ee94f74aed7f5da85d1b57a7706328424386662a"
+  },
+  "consumer": {
+    "model": "example:unbound",
+    "tokenizer": "example:unbound"
+  },
+  "entries": [
+    {
+      "ref": {
+        "id": "math/idea",
+        "rev": "draft.1"
+      },
+      "text": "Explore order-axiom transfer; speculative.",
+      "protected": {
+        "id": "math/idea",
+        "rev": "draft.1",
+        "kind": "research.idea",
+        "state": {
+          "knowledge": "speculative"
+        }
+      }
+    }
+  ],
+  "evaluation": {
+    "status": "unassessed"
+  },
+  "example_bundle": "math"
+}

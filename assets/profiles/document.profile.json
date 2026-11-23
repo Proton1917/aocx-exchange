@@ -1,0 +1,29 @@
+{
+  "id": "document/1",
+  "version": "1.0",
+  "title": "Optional document and measurement profile",
+  "activation": "optional",
+  "scope": {
+    "examples": ["document.section", "lab.measurement"],
+    "vocabulary": "open",
+    "meaning": "Record types outside these examples keep their original fields and values."
+  },
+  "schema": {
+    "path": "../schemas/document-profile.schema.json",
+    "dialect": "https://json-schema.org/draft/2020-12/schema"
+  },
+  "checks": [
+    {
+      "id": "measurement-unit",
+      "implementation": "json-schema",
+      "when": "kind equals lab.measurement",
+      "rule": "body.unit is a nonempty string; body.value, when supplied, is a number or null"
+    },
+    {
+      "id": "anchor-interpretation",
+      "implementation": "reader",
+      "rule": "Interpret each anchor according to its own scheme, preserving units and interval endpoint conventions."
+    }
+  ],
+  "evidence_scope": "Schema validation checks representation; measurement acquisition and document accuracy belong to the named evidence sources."
+}

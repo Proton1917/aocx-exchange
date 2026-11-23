@@ -1,0 +1,5 @@
+# Independently authored Legacy read fixture
+# Unknown header preserved verbatim.
+===/legacy/project/===
+model.py[Code.General.7.T]: F:Defines a job | R:- | A:Job | S1:Retain its identifier | S2:Preserve its owner | X:unrecognized segment
+worker.py[Code.General.9.T]: F:Runs a job | R:model.py | A:run | S:-
