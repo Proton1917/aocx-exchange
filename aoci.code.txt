@@ -81,7 +81,7 @@ gbcx.py[IE8M]: F:将 GBCX 声明、方法、任务、来源、符号和工具转
 aocx.py[EB9T]: F:提供 AOCX 历史导入接口与命令行的统一兼容入口 | R:code:scripts/aocx_core/__init__.py,code:scripts/aocx_core/cli.py | A:重导出档案、投影、编译、解码、校验及逻辑接口，执行 CLI main | S:按绝对文件位置加载时补入 scripts 搜索路径；历史私有辅助符号继续由此入口导出
 
 ===/<repository>/.github/workflows/===
-test.yml[FQ5T]: F:在推送与拉取请求中验收上下文契约、示例及 Schema 再生成 | R:code:assets/examples/compile_example.py,code:assets/schemas/build_schemas.py | A:Python 3.9 与 3.12 矩阵执行单元测试、形式示例和生成差异检查 | S:安装 jsonschema 后执行 Schema 测试，避免因可选依赖缺失而跳过
+test.yml[FQ5T]: F:在推送与拉取请求中验收上下文契约、示例及 Schema 再生成 | R:code:assets/examples/compile_example.py,code:assets/schemas/build_schemas.py | A:Ubuntu 22.04 上的 Python 3.9 与 3.12 矩阵执行单元测试、形式示例和生成差异检查 | S:fail-fast=false 保留两组运行结果；安装 jsonschema 使 Schema 测试实际执行
 
 ===/<repository>/assets/examples/formal/===
 README.md[SB5T]: F:解释形式上下文示例的表达式、精确保全、投影闭包及复现方法 | R:code:assets/examples/compile_example.py,code:assets/examples/formal/verification.json | A:说明逻辑词汇、历史修订与源附件的保留范围 | S:示例谓词含义由记录中的词汇定义声明
