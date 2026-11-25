@@ -1,0 +1,856 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:aocx:schema:representation:1.0",
+  "title": "AOCX verified context representation envelope",
+  "description": "Decoded payload of an AOCX/1 representation wire frame. The codec header and dictionary are part of the measured wire cost. Attachment bytes and archive container metadata remain in the source archive.",
+  "$comment": "Authored schema. Decode the registered wire codec before applying it. Hash equality, source binding, contract normalization, graph closure and typed value equivalence are enforced by verify_representation.",
+  "type": "object",
+  "required": [
+    "format",
+    "version",
+    "contract",
+    "source",
+    "context",
+    "recovery"
+  ],
+  "properties": {
+    "format": {
+      "const": "AOCX-REP"
+    },
+    "version": {
+      "const": "1.0"
+    },
+    "contract": {
+      "$ref": "#/$defs/contract"
+    },
+    "source": {
+      "type": "object",
+      "required": [
+        "namespace",
+        "snapshot_sha256",
+        "records_sha256",
+        "relations_sha256"
+      ],
+      "properties": {
+        "namespace": {
+          "type": "string",
+          "minLength": 1
+        },
+        "snapshot_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "records_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "relations_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      },
+      "additionalProperties": false
+    },
+    "context": {
+      "$ref": "#/$defs/context"
+    },
+    "recovery": {
+      "type": "object",
+      "required": [
+        "kind",
+        "scope",
+        "target_sha256"
+      ],
+      "properties": {
+        "kind": {
+          "const": "self-contained"
+        },
+        "scope": {
+          "const": "context-values"
+        },
+        "target_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "contract": {
+      "type": "object",
+      "required": [
+        "format",
+        "version",
+        "fidelity",
+        "selection",
+        "omit_fields"
+      ],
+      "properties": {
+        "format": {
+          "const": "AOCX-CONTRACT"
+        },
+        "version": {
+          "const": "1.0"
+        },
+        "fidelity": {
+          "enum": [
+            "exact",
+            "projection"
+          ]
+        },
+        "selection": {
+          "oneOf": [
+            {
+              "type": "object",
+              "required": [
+                "mode"
+              ],
+              "properties": {
+                "mode": {
+                  "const": "all"
+                }
+              },
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "required": [
+                "mode",
+                "ids"
+              ],
+              "properties": {
+                "mode": {
+                  "const": "heads"
+                },
+                "ids": {
+                  "type": "array",
+                  "minItems": 1,
+                  "uniqueItems": true,
+                  "items": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                }
+              },
+              "additionalProperties": false
+            }
+          ]
+        },
+        "omit_fields": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "body",
+              "extensions"
+            ]
+          }
+        }
+      },
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "fidelity": {
+                "const": "exact"
+              }
+            },
+            "required": [
+              "fidelity"
+            ]
+          },
+          "then": {
+            "properties": {
+              "selection": {
+                "properties": {
+                  "mode": {
+                    "const": "all"
+                  }
+                }
+              },
+              "omit_fields": {
+                "maxItems": 0
+              }
+            }
+          }
+        }
+      ],
+      "$comment": "Selection ids and omitted fields use sorted canonical order. Projection includes the transitive closure of pinned prerequisites. The runtime enforces both conditions."
+    },
+    "context": {
+      "type": "object",
+      "required": [
+        "namespace",
+        "records",
+        "relations",
+        "heads",
+        "profiles",
+        "required_profiles",
+        "metadata"
+      ],
+      "properties": {
+        "namespace": {
+          "type": "string",
+          "minLength": 1
+        },
+        "records": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/record"
+          }
+        },
+        "relations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/relation"
+          }
+        },
+        "heads": {
+          "type": "object",
+          "propertyNames": {
+            "type": "string",
+            "minLength": 1
+          },
+          "additionalProperties": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "profiles": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "contains": {
+            "const": "core/1"
+          }
+        },
+        "required_profiles": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "contains": {
+            "const": "core/1"
+          }
+        },
+        "metadata": {
+          "type": "object",
+          "additionalProperties": true
+        }
+      },
+      "additionalProperties": false,
+      "$comment": "Runtime checks enforce unique identities, pinned graph references, required-profile inclusion and valid heads. Exact contexts keep one head per record id; projected contexts can retain historical premises without a head."
+    },
+    "record": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "rev": {
+          "type": "string",
+          "minLength": 1
+        },
+        "kind": {
+          "type": "string",
+          "minLength": 1
+        },
+        "text": {
+          "type": "string"
+        },
+        "body": {},
+        "state": {
+          "type": "object",
+          "properties": {
+            "work": {
+              "type": "string"
+            },
+            "knowledge": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": true
+        },
+        "conditions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "text"
+            ],
+            "properties": {
+              "text": {
+                "type": "string"
+              },
+              "ref": {
+                "$ref": "#/$defs/ref"
+              }
+            },
+            "additionalProperties": true
+          }
+        },
+        "scope": {
+          "type": "string"
+        },
+        "provenance": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": true
+          }
+        },
+        "anchors": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": true
+          }
+        },
+        "extensions": {},
+        "logic": {
+          "if": {
+            "type": "object",
+            "required": [
+              "format"
+            ],
+            "properties": {
+              "format": {
+                "const": "aocx-logic/1"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/$defs/logic"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "rev",
+        "kind",
+        "text"
+      ],
+      "additionalProperties": true
+    },
+    "relation": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "kind": {
+          "type": "string",
+          "minLength": 1
+        },
+        "from": {
+          "$ref": "#/$defs/ref"
+        },
+        "to": {
+          "$ref": "#/$defs/ref"
+        },
+        "body": {},
+        "extensions": {}
+      },
+      "required": [
+        "id",
+        "from",
+        "to",
+        "kind"
+      ],
+      "additionalProperties": true
+    },
+    "ref": {
+      "type": "object",
+      "required": [
+        "id",
+        "rev"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "rev": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": true
+    },
+    "logic": {
+      "type": "object",
+      "required": [
+        "format",
+        "expression"
+      ],
+      "properties": {
+        "format": {
+          "const": "aocx-logic/1"
+        },
+        "expression": {
+          "$ref": "#/$defs/logicNode"
+        }
+      },
+      "additionalProperties": true,
+      "description": "Domain-authored logical structure. Predicate meanings, free variable interpretation, and source-text correspondence belong to the author and reader."
+    },
+    "logicNode": {
+      "type": "object",
+      "required": [
+        "op"
+      ],
+      "properties": {
+        "op": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": true,
+      "description": "An authored logic node. Known operators retain their fields and child order. Unknown operators and extra fields remain opaque JSON values.",
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "op": {
+                "const": "var"
+              }
+            },
+            "required": [
+              "op"
+            ]
+          },
+          "then": {
+            "required": [
+              "name"
+            ],
+            "properties": {
+              "name": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "op": {
+                "const": "const"
+              }
+            },
+            "required": [
+              "op"
+            ]
+          },
+          "then": {
+            "required": [
+              "value"
+            ],
+            "properties": {
+              "value": {
+                "type": [
+                  "string",
+                  "number",
+                  "boolean",
+                  "null"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "op": {
+                "const": "literal"
+              }
+            },
+            "required": [
+              "op"
+            ]
+          },
+          "then": {
+            "required": [
+              "text"
+            ],
+            "properties": {
+              "text": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "op": {
+                "const": "call"
+              }
+            },
+            "required": [
+              "op"
+            ]
+          },
+          "then": {
+            "required": [
+              "name",
+              "args"
+            ],
+            "properties": {
+              "name": {
+                "type": "string",
+                "minLength": 1
+              },
+              "args": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/logicNode"
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "op": {
+                "const": "bind"
+              }
+            },
+            "required": [
+              "op"
+            ]
+          },
+          "then": {
+            "required": [
+              "name",
+              "bindings"
+            ],
+            "properties": {
+              "name": {
+                "type": "string",
+                "minLength": 1
+              },
+              "bindings": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": [
+                    "name",
+                    "value"
+                  ],
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "value": {
+                      "$ref": "#/$defs/logicNode"
+                    }
+                  },
+                  "additionalProperties": true,
+                  "$comment": "The executable validator additionally requires unique binding names."
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "op": {
+                "const": "set"
+              }
+            },
+            "required": [
+              "op"
+            ]
+          },
+          "then": {
+            "required": [
+              "binder",
+              "body"
+            ],
+            "properties": {
+              "binder": {
+                "type": "string",
+                "minLength": 1
+              },
+              "body": {
+                "$ref": "#/$defs/logicNode"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "op": {
+                "const": "forall"
+              }
+            },
+            "required": [
+              "op"
+            ]
+          },
+          "then": {
+            "required": [
+              "binder",
+              "body"
+            ],
+            "properties": {
+              "binder": {
+                "type": "string",
+                "minLength": 1
+              },
+              "body": {
+                "$ref": "#/$defs/logicNode"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "op": {
+                "const": "exists"
+              }
+            },
+            "required": [
+              "op"
+            ]
+          },
+          "then": {
+            "required": [
+              "binder",
+              "body"
+            ],
+            "properties": {
+              "binder": {
+                "type": "string",
+                "minLength": 1
+              },
+              "body": {
+                "$ref": "#/$defs/logicNode"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "op": {
+                "const": "not"
+              }
+            },
+            "required": [
+              "op"
+            ]
+          },
+          "then": {
+            "required": [
+              "body"
+            ],
+            "properties": {
+              "body": {
+                "$ref": "#/$defs/logicNode"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "op": {
+                "const": "sequent"
+              }
+            },
+            "required": [
+              "op"
+            ]
+          },
+          "then": {
+            "required": [
+              "left",
+              "right"
+            ],
+            "properties": {
+              "left": {
+                "$ref": "#/$defs/logicNode"
+              },
+              "right": {
+                "$ref": "#/$defs/logicNode"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "op": {
+                "const": "and"
+              }
+            },
+            "required": [
+              "op"
+            ]
+          },
+          "then": {
+            "required": [
+              "left",
+              "right"
+            ],
+            "properties": {
+              "left": {
+                "$ref": "#/$defs/logicNode"
+              },
+              "right": {
+                "$ref": "#/$defs/logicNode"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "op": {
+                "const": "or"
+              }
+            },
+            "required": [
+              "op"
+            ]
+          },
+          "then": {
+            "required": [
+              "left",
+              "right"
+            ],
+            "properties": {
+              "left": {
+                "$ref": "#/$defs/logicNode"
+              },
+              "right": {
+                "$ref": "#/$defs/logicNode"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "op": {
+                "const": "implies"
+              }
+            },
+            "required": [
+              "op"
+            ]
+          },
+          "then": {
+            "required": [
+              "left",
+              "right"
+            ],
+            "properties": {
+              "left": {
+                "$ref": "#/$defs/logicNode"
+              },
+              "right": {
+                "$ref": "#/$defs/logicNode"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "op": {
+                "const": "iff"
+              }
+            },
+            "required": [
+              "op"
+            ]
+          },
+          "then": {
+            "required": [
+              "left",
+              "right"
+            ],
+            "properties": {
+              "left": {
+                "$ref": "#/$defs/logicNode"
+              },
+              "right": {
+                "$ref": "#/$defs/logicNode"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "op": {
+                "const": "in"
+              }
+            },
+            "required": [
+              "op"
+            ]
+          },
+          "then": {
+            "required": [
+              "left",
+              "right"
+            ],
+            "properties": {
+              "left": {
+                "$ref": "#/$defs/logicNode"
+              },
+              "right": {
+                "$ref": "#/$defs/logicNode"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "op": {
+                "const": "eq"
+              }
+            },
+            "required": [
+              "op"
+            ]
+          },
+          "then": {
+            "required": [
+              "left",
+              "right"
+            ],
+            "properties": {
+              "left": {
+                "$ref": "#/$defs/logicNode"
+              },
+              "right": {
+                "$ref": "#/$defs/logicNode"
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

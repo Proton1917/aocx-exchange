@@ -1,0 +1,235 @@
+{
+  "namespace": "example:formal",
+  "records": [
+    {
+      "id": "formal/vocabulary",
+      "rev": "1",
+      "kind": "domain.definition",
+      "text": "符号含义由作者声明；predicate names remain domain-owned.",
+      "state": {
+        "knowledge": "declared"
+      },
+      "scope": "Illustrative game taxonomy; external factual verification is separate.",
+      "vocabulary": {
+        "zh": "A presentation annotation retaining the expression as its argument.",
+        "S": "The author-defined context binding x in this sequent.",
+        "Dev": "Developer of the named game.",
+        "SelfDev": "The developer named by the first argument developed the second argument.",
+        "OpenAdvGame": "The argument belongs to the authored open-world adventure-game category.",
+        "y": "The set-builder variable ranging over games."
+      }
+    },
+    {
+      "id": "formal/premise",
+      "rev": "1",
+      "kind": "claim",
+      "text": "在本例词汇下，作者声明 SelfDev 与 OpenAdvGame 两个条件。",
+      "state": {
+        "knowledge": "assumed"
+      },
+      "conditions": [
+        {
+          "text": "Use the declared domain vocabulary.",
+          "ref": {
+            "id": "formal/vocabulary",
+            "rev": "1"
+          }
+        }
+      ],
+      "logic": {
+        "format": "aocx-logic/1",
+        "expression": {
+          "op": "and",
+          "left": {
+            "op": "call",
+            "name": "SelfDev",
+            "args": [
+              {
+                "op": "call",
+                "name": "Dev",
+                "args": [
+                  {
+                    "op": "const",
+                    "value": "GenshinImpact"
+                  }
+                ]
+              },
+              {
+                "op": "const",
+                "value": "GenshinImpact"
+              }
+            ]
+          },
+          "right": {
+            "op": "call",
+            "name": "OpenAdvGame",
+            "args": [
+              {
+                "op": "const",
+                "value": "GenshinImpact"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "formal/claim",
+      "rev": "1",
+      "kind": "claim",
+      "text": "原神（GenshinImpact）：本例声明它是开发商自研的开放世界冒险游戏。 The conclusion uses premise revision 1.",
+      "logic": {
+        "format": "aocx-logic/1",
+        "expression": {
+          "op": "call",
+          "name": "zh",
+          "args": [
+            {
+              "op": "sequent",
+              "left": {
+                "op": "bind",
+                "name": "S",
+                "bindings": [
+                  {
+                    "name": "x",
+                    "value": {
+                      "op": "const",
+                      "value": "GenshinImpact"
+                    }
+                  }
+                ]
+              },
+              "right": {
+                "op": "in",
+                "left": {
+                  "op": "var",
+                  "name": "x"
+                },
+                "right": {
+                  "op": "set",
+                  "binder": "y",
+                  "body": {
+                    "op": "and",
+                    "left": {
+                      "op": "call",
+                      "name": "SelfDev",
+                      "args": [
+                        {
+                          "op": "call",
+                          "name": "Dev",
+                          "args": [
+                            {
+                              "op": "var",
+                              "name": "x"
+                            }
+                          ]
+                        },
+                        {
+                          "op": "var",
+                          "name": "y"
+                        }
+                      ]
+                    },
+                    "right": {
+                      "op": "call",
+                      "name": "OpenAdvGame",
+                      "args": [
+                        {
+                          "op": "var",
+                          "name": "y"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "interpretation": "Authored domain notation; the reader supplies predicate meanings.",
+        "symbols": {
+          "zh": "A presentation annotation retaining the expression as its argument.",
+          "S": "The author-defined context binding x in this sequent.",
+          "Dev": "Developer of the named game.",
+          "SelfDev": "The developer named by the first argument developed the second argument.",
+          "OpenAdvGame": "The argument belongs to the authored open-world adventure-game category.",
+          "y": "The set-builder variable ranging over games."
+        }
+      },
+      "state": {
+        "knowledge": "declared"
+      },
+      "scope": "Under formal/premise@1 and the authored symbol interpretation.",
+      "conditions": [
+        {
+          "text": "Retain the premise at its cited revision.",
+          "ref": {
+            "id": "formal/premise",
+            "rev": "1"
+          }
+        }
+      ],
+      "anchors": [
+        {
+          "scheme": "asset",
+          "path": "attachments/source.txt",
+          "line": 1
+        }
+      ],
+      "future.domain": {
+        "labels": [
+          "原神",
+          "GenshinImpact",
+          "∀",
+          "自由"
+        ],
+        "reviewed": false,
+        "confidence": null,
+        "revision_weight": 1.0
+      }
+    }
+  ],
+  "relations": [
+    {
+      "id": "formal/claim-premise",
+      "from": {
+        "id": "formal/claim",
+        "rev": "1"
+      },
+      "kind": "depends_on",
+      "to": {
+        "id": "formal/premise",
+        "rev": "1"
+      }
+    },
+    {
+      "id": "formal/premise-vocabulary",
+      "from": {
+        "id": "formal/premise",
+        "rev": "1"
+      },
+      "kind": "assumes",
+      "to": {
+        "id": "formal/vocabulary",
+        "rev": "1"
+      }
+    }
+  ],
+  "heads": {
+    "formal/vocabulary": "1",
+    "formal/claim": "1"
+  },
+  "profiles": [
+    "core/1"
+  ],
+  "required_profiles": [
+    "core/1"
+  ],
+  "metadata": {
+    "extensions": {
+      "example": true,
+      "domain_semantics": "author-declared",
+      "display_language": "自由 / open"
+    }
+  }
+}
